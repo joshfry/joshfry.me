@@ -69,10 +69,12 @@ body {
 	}
 }
 
-// Temp
+// Inline code
 // ------------------------------------------------------------
 
-pre {
-	overflow: auto;
-	background: #071022;
+p code {
+	background: #e8eefa;
+	border: 1px solid #becff2;
+	padding: .1em .375em;
+	border-radius: .25em;
 }

@@ -1,4 +1,4 @@
 joshfry.me
 ==
 
-Redesigning and building my personal website using Jekyll.
+My personal website [http://joshfry.me](http://joshfry.me)
