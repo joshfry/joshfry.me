@@ -4,4 +4,4 @@ permalink: /:categories/:title/
 
 pygments: true
 
-exclude: [scss, components, jekyll.sublime-project, jekyll.sublime-workspace, README.md]
+exclude: [scss, components, jekyll.sublime-project, jekyll.sublime-workspace, README.md, Guardfile, gitpull.php]
