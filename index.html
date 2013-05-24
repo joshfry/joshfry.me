@@ -1,58 +1,18 @@
-<!DOCTYPE html>
-<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html class=""> <!--<![endif]-->
-<head> 
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<title>Title</title>
-	<meta content="" name="description" />
-	
-	<style>
-		* { margin: 0; padding: 0 }
-		* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box }
-		::selection { background: #fb9fe5; text-shadow: none }
-		a { color: #2379cf; text-decoration: none; outline: 0 }
-		a:hover { color: #123e69 }
-		a img { border: none }
-		img { max-width: 100% }
-		html { font-size: 100%; color: #444 }
-		body { padding: 5%; font: 1em/1.6 sans-serif; max-width: 600px; margin: auto }
-		h1 { margin-bottom: 1em }
-		div { margin-bottom: 2em }
-	</style>
-</head>	
-<body>
-	
-	<h1>I'm on top of the world</h1>
+---
+layout: default
+---
 
-	<div>
-		<img src="http://bukk.it/bean.gif" />
-		<h2>So, I got post-commit hooks working now.</h2>
-	</div>
-	<div>
-		<img src="http://bukk.it/cabinboogie.gif" />
-		<h2>This is absolutely fantabulous.</h2>
-	</div>
-	<div>
-		<img src="http://bukk.it/bushflex.jpg" />
-		<h2>I mean, I make some chages to my site. Commit my updates to Git Hub, and magically my website is updated. Wow.</h2>
-	</div>
-	<div>
-		<img src="http://bukk.it/skygator.gif" />
-		<h2>This is how fun git is.</h2>
-	</div>
-	<div>
-		<img src="http://bukk.it/heeheeheehee.gif" />
-		<h2>Lets go running</h2>
-	</div>
-	<div>
-		<img src="http://bukk.it/business.gif" />
-		<h2>Git like a pro like this guy.</h2>
-	</div>
-	
-</body>
-</html>
+<ul class="entries">
+	{% for post in site.posts %}
+
+	<li class="entry">
+		<a class="post-link" href="{{ post.url }}">
+			<!-- <img src="{{ post.image }}" /> -->
+			<h3 class="post-title">{{ post.title }}</h3>
+			<p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
+			<p class="exerpt">{{ post.exerpt }}</p>
+		</a>
+	</li>
+
+	{% endfor %}
+</ul>

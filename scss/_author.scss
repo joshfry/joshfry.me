@@ -1,0 +1,78 @@
+html { 
+	font-size: 100%; 
+	color: #444;
+}
+
+body { 
+	font: 300 1em/1.5 "proxima-nova", sans-serif;
+
+	@include breakpoint(min40) { font-size: 112.5% }
+}
+
+.container {
+	width: 90%;
+	max-width: 40em;
+	margin: auto;
+}
+
+.site-header {
+	// @include rem('padding',$baseline-px*.5 0);
+	@include clearfix;
+	border-bottom: 1px solid #ddd;
+	padding: 1em 0;
+	margin-bottom: 40px;
+	background: #071022;
+
+	.logo {
+		display: block;
+		font-size: 1.5em;
+		line-height: 2.5;
+		color: #fff;		
+		
+		img {
+			display: block;
+			width: 65px;
+			height: 65px;
+			border-radius: 100%;
+			overflow: hidden;
+			float: left;
+			margin-right: 1em;
+		}
+	}
+
+}
+
+.entry {
+	border-bottom: 1px solid #ccc;
+
+	.post-title {
+		font-size: 1.5em;
+	}
+	.post-date {
+		font-size: .8em;
+		margin-bottom: .5em;
+	}
+	p {
+		margin: 0;
+		color: #999;
+	}
+}
+
+.site-footer {
+	text-align: center;
+	@include rem('margin',$baseline-px*2 0 0 0);
+	@include rem('padding',$baseline-px*2 0);
+
+	.copyright {
+		display: block;
+		@include rem('margin',$baseline-px/4 0 0 0);
+	}
+}
+
+// Temp
+// ------------------------------------------------------------
+
+pre {
+	overflow: auto;
+	background: #071022;
+}

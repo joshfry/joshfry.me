@@ -1,0 +1,7 @@
+auto: true
+
+permalink: /:categories/:title/
+
+pygments: true
+
+exclude: [scss, components, jekyll.sublime-project, jekyll.sublime-workspace, README.md]

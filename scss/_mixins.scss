@@ -1,0 +1,49 @@
+/*	Media queries
+----------------------------------------------------------------------------- */
+/* 
+	320px  = 20em		88% = 282
+	640px  = 40em		88% = 564
+	960px  = 60em		88% = 846
+	1280px = 80em		88% = 1128
+*/
+
+@mixin breakpoint($point) {
+	@if $point == min20 {
+		@media (min-width: 20em) { @content; }
+	}
+	@else if $point == min40 {
+		@media (min-width: 40em) { @content; }
+	}
+	@else if $point == min60 {
+		@media (min-width: 60em)  { @content; }
+	}
+	@else if $point == min80 {
+		@media (min-width: 80em)  { @content; }
+	}
+}
+
+/*	Rem - https://github.com/bitmanic/rem
+----------------------------------------------------------------------------- */
+
+// TODO: Move this variable to "_variables.scss"
+$baseline-px: 16px;
+
+@mixin rem($property, $px-values) {
+	// Convert the baseline into rems
+	$baseline-rem: $baseline-px / 1rem;
+	// Print the first line in pixel values
+	#{$property}: $px-values;
+	// If there is only one (numeric) value, return the property/value line for it.
+	@if type-of($px-values) == "number" {
+		#{$property}: $px-values / $baseline-rem; }
+	@else {
+		// Create an empty list that we can dump values into
+		$rem-values: unquote("");
+		@each $value in $px-values {
+			// If the value is zero, return 0
+			@if $value == 0 {
+				$rem-values: append($rem-values, $value); }
+			@else {
+				$rem-values: append($rem-values, $value / $baseline-rem); } }
+		// Return the property and its list of converted values
+		#{$property}: $rem-values; } }

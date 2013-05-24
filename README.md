@@ -1,1 +1,4 @@
-# Testing post-commit hook
+joshfry.me
+==
+
+Redesigning and building my personal website using Jekyll.

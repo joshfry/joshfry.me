@@ -1,0 +1,48 @@
+
+// Use modular scale : golden ratio
+
+h1 {
+	font-family: "franklin-gothic-ext-comp-urw";
+	font-size: modular-scale(1em, 3, 1.618);
+	font-weight: 400;
+	line-height: .75;
+	text-transform: uppercase;
+	@include rem('margin',0 0 $baseline-px*1.5 0);
+}
+h2 {
+	font-size: 1.25em;
+	line-height: 1;
+	@include rem('margin',$baseline-px*3 0 $baseline-px*.75 0);
+}
+
+.intro {
+	font-size: 1.2em;
+	font-style: italic;
+	line-height: 1.125;
+	color: #99BB6C;
+}
+
+.postdate {
+	@include rem('margin',$baseline-px*3 0);
+}
+
+p {
+	@include rem('margin',16px 0);
+}
+
+ul, ol {
+	padding-left: 2em;
+}
+
+// Code
+
+pre {
+	overflow: auto;
+	@include rem('margin',$baseline-px*2 0);
+	padding: 1.25em;
+	border-radius: 4px;
+	-webkit-overflow-scrolling: touch;
+
+	@include breakpoint(min20) { font-size: 106.25% }
+	@include breakpoint(min40) { font-size: 100%; }
+}

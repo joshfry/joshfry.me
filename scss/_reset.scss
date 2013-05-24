@@ -1,0 +1,28 @@
+* { 
+	margin: 0; 
+	padding: 0;
+	@include box-sizing( border-box );
+}
+
+::selection { 
+	background: #fb9fe5; 
+	text-shadow: none;
+}
+
+img { 
+	max-width: 100%;
+}
+
+a { 
+	text-decoration: none; 
+	outline: 0;
+	color: blue;
+
+	.main &:hover {
+		text-decoration: underline;
+	}
+
+	img { 
+		border: none;
+	}
+}
