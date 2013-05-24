@@ -23,6 +23,6 @@ Say your development computer’s LAN IP address is 10.0.0.1. With the new versi
 
 ## Livereload js
 
-<pre><code class="language-js">// Livereload
+<pre><code class="language-javascript">// Livereload
 document.write('&lt;script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"&gt;&lt;/' + 'script&gt;');
 </code></pre>
