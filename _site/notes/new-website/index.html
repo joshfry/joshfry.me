@@ -1,82 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Josh Fry is a front end web developer currently working at @montereyaq." />	
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width">
 
-	<title> New Website |  joshfry.me</title>
-	
-	<script type="text/javascript" src="//use.typekit.net/avi1aky.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-	
-	<link rel="stylesheet" href="/css/style.css" />
+  <title> New Website |  joshfry.me</title>
+  <meta name="description" content="Josh Fry is a front end web developer currently working at @montereyaq." />
+
+  <script type="text/javascript" src="//use.typekit.net/bki8kjv.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <script src="/js/plugins/modernizr.min.js"></script>
 </head>
-<body>
+<body class="nav New Website">
 
-	<header class="site-header" role="banner">
-		<div class="container">
-			
-			<a class="logo" href="/"><img src="/img/josh-avatar.png" width="65" height="65" alt="joshfry.me"/> Josh Fry</a>
-		
-		</div>
-	</header>
+<header class="site-header">
+  <div class="logo-box">
+    <a href="/" style="display: block">
+      <div class="site-avatar"><img src="/img/josh-avatar.png" alt="Josh Fry avatar"></div>
+      <h1 class="site-title"><a href="/">Josh Fry</a></h1>
+      <h2 class="site-subtitle">Front End Developer &amp; Designer</h2>
+    </a>
+  </div>
+  <nav class="site-nav">
+    <a href="/" class="home"><i class="icon-home"></i>Home</a>
+    <a href="/portfolio" class="portfolio"><i class="icon-eye"></i>Portfolio</a>
+    <a href="/about" class="about"><i class="icon-user_male"></i>About</a>
+    <a href="/archives" class="archives"><i class="icon-newspaper"></i>Archives</a>
+  </nav>
+</header>
 
-	<div class="main" role="main">
-		<div class="container">
-		
-			<!-- <img src="" /> -->
-<h1 class="content">New Website</h1>
- 
-<p>I decided to use <a href='http://jekyllrb.com/'>Jekyll</a> for my new website. Jekyll is a static site generator which means there&#8217;s no database to manage, I can write all of my posts in Markdown and use git for version control and to push updates to my server. I really didn&#8217;t want to use Wordpress for my new site because compared to Jekyll, Wordpress just feels like a brick.</p>
+<main class="site-main"> <!-- add class .art-direction -->
+
+  <!-- TODO: Create a hero unit -->
+  <!-- <div class="hero-unit">
+    <img src="http://placehold.it/2000x500" alt="">
+  </div> -->
+
+    <!-- TODO: Work on article header util. Like the footer. -->
+<!--
+<div class="article-header">
+  <nav class="article-header--util-left">
+    <a href="/"><i class="icon-arrow_left"></i></a>
+  </nav>
+  <nav class="article-header--util-right">
+    <a href="/"><i class="icon-arrow_up"></i></a>
+    <a href="/"><i class="icon-arrow_right"></i></a>
+  </nav>
+</div>
+-->
+
+<div class="container">
+  <!-- <img src="" /> -->
+  <p class="article-date">April 01, 2013</p>
+  <h1 class="article-title">New Website</h1>
+  <p>I decided to use <a href='http://jekyllrb.com/'>Jekyll</a> for my new website. Jekyll is a static site generator which means there&#8217;s no database to manage, I can write all of my posts in Markdown and use git for version control and to push updates to my server. I really didn&#8217;t want to use Wordpress for my new site because compared to Jekyll, Wordpress just feels like a brick.</p>
 
 <p>If using a static site generator sounds interesting to you but you&#8217;re not sure where to begin, <a href='http://net.tutsplus.com/tutorials/other/building-static-sites-with-jekyll/'>this tutorial</a> got <em>me</em> up and running and the <a href='https://github.com/mojombo/jekyll/wiki'>Jekyll Wiki</a> has everything else.</p>
+</div>
 
-<h2 id='how_to_get_svg_support_in_jekyll'>How to get SVG support in Jekyll</h2>
 
-<p>I found the following solution on <a href='http://stackoverflow.com/questions/13687030/how-do-i-configure-jekyll-to-serve-svg'>Stack Overflow</a>:</p>
+</main>
 
-<ol>
-<li>Create a <code>_plugins</code> directory in the root of your Jekyll project.</li>
+<footer class="site-footer">
+  <div class="container">
+      <p class="sosumi">Made by <a href="http://twitter.com/joshfry" target="_blank">Josh Fry</a></p>
+      <div class="social">
+        <nav>
+          <a href="http://github.com/joshfry" class="github" target="_blank">
+            <i class="social-icon-github"></i>
+            <span>GitHub</span></a>
+          <a href="http://codepen.io/joshfry" class="codepen" target="_blank">
+            <i class="social-icon-codepen"></i>
+            <span>Codepen</span></a>
+          <a href="http://twitter.com/joshfry" class="twitter" target="_blank">
+            <i class="social-icon-twitter"></i>
+            <span>Twitter</span></a>
+        </nav>
+      </div>
+  </div><!-- / container -->
+</footer>
 
-<li>Create a file called <code>svg_mime_type.rb</code> in <code>_plugins</code></li>
+<!-- <script src="/components/jquery/jquery.min.js"></script> -->
+<script src="/js/site.min.js"></script>
 
-<li>Add this to <code>svg_mime_type.rb:</code></li>
-</ol>
-<pre><code class='language-css'>require 'webrick'
-include WEBrick
-WEBrick::HTTPUtils::DefaultMimeTypes.store 'svg', 'image/svg+xml'
-</code></pre>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30007230-1']);
+  _gaq.push(['_setDomainName', 'joshfry.me']);
+  _gaq.push(['_trackPageview']);
 
-		</div>
-	</div>
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 
-	<footer class="site-footer" role="contentinfo">
-		<div class="container">
-
-			<div class="social">
-				<nav><a href="http://twitter.com/joshfry" class="twitter" data-icon="&#x61;" target="_blank"><span>Twitter</span></a><a href="http://github.com/joshfry" class="github" data-icon="&#x62;" target="_blank"><span>GitHub</span></a><a href="http://codepen.io/joshfry" class="codepen" data-icon="&#x63;" target="_blank"><span>Codepen</span></a><a href="http://forrst.me/joshfry/posts" class="forrst" data-icon="&#x64;" target="_blank"><span>Forrst</span></a><a href="http://zootool.com/user/joshfry/" class="zootool" data-icon="&#x65;" target="_blank"><span>Zoo Tool</span></a></nav>
-			</div>
-			
-			<a class="copyright" href="http://twitter.com/@joshfry">@joshfry</a>
-
-		</div>
-	</footer>
-
-	<script type="text/javascript" src="/js/app.js"></script>
-
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-30007230-1']);
-		_gaq.push(['_setDomainName', 'joshfry.me']);
-		_gaq.push(['_trackPageview']);
-
-		(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	</script>
-	
 </body>
 </html>

@@ -1,53 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Josh Fry is a front end web developer currently working at @montereyaq." />	
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width">
 
-	<title> Omega Reset For Bourbon Neat |  joshfry.me</title>
-	
-	<script type="text/javascript" src="//use.typekit.net/avi1aky.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-	
-	<link rel="stylesheet" href="/css/style.css" />
+  <title> Omega Reset For Bourbon Neat |  joshfry.me</title>
+  <meta name="description" content="Josh Fry is a front end web developer currently working at @montereyaq." />
+
+  <script type="text/javascript" src="//use.typekit.net/bki8kjv.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <script src="/js/plugins/modernizr.min.js"></script>
 </head>
-<body>
+<body class="nav Omega Reset For Bourbon Neat">
 
-	<header class="site-header" role="banner">
-		<div class="container">
-			
-			<a class="logo" href="/"><img src="/img/josh-avatar.png" width="65" height="65" alt="joshfry.me"/> Josh Fry</a>
-		
-		</div>
-	</header>
+<header class="site-header">
+  <div class="logo-box">
+    <a href="/" style="display: block">
+      <div class="site-avatar"><img src="/img/josh-avatar.png" alt="Josh Fry avatar"></div>
+      <h1 class="site-title"><a href="/">Josh Fry</a></h1>
+      <h2 class="site-subtitle">Front End Developer &amp; Designer</h2>
+    </a>
+  </div>
+  <nav class="site-nav">
+    <a href="/" class="home"><i class="icon-home"></i>Home</a>
+    <a href="/portfolio" class="portfolio"><i class="icon-eye"></i>Portfolio</a>
+    <a href="/about" class="about"><i class="icon-user_male"></i>About</a>
+    <a href="/archives" class="archives"><i class="icon-newspaper"></i>Archives</a>
+  </nav>
+</header>
 
-	<div class="main" role="main">
-		<div class="container">
-		
-			<!-- <img src="" /> -->
-<h1 class="content">Omega Reset For Bourbon Neat</h1>
- 
-<p>This mixin assumes you are designing &#8220;mobile first&#8221; and using <code>min-width</code> media queries. As well as using Sass, Bourbon and Bourbon Neat in your project.</p>
+<main class="site-main"> <!-- add class .art-direction -->
 
-<h2 id='the_problem'>The problem</h2>
+  <!-- TODO: Create a hero unit -->
+  <!-- <div class="hero-unit">
+    <img src="http://placehold.it/2000x500" alt="">
+  </div> -->
+
+    <!-- TODO: Work on article header util. Like the footer. -->
+<!--
+<div class="article-header">
+  <nav class="article-header--util-left">
+    <a href="/"><i class="icon-arrow_left"></i></a>
+  </nav>
+  <nav class="article-header--util-right">
+    <a href="/"><i class="icon-arrow_up"></i></a>
+    <a href="/"><i class="icon-arrow_right"></i></a>
+  </nav>
+</div>
+-->
+
+<div class="container">
+  <!-- <img src="" /> -->
+  <p class="article-date">May 13, 2013</p>
+  <h1 class="article-title">Omega Reset For Bourbon Neat</h1>
+  <p class='intro'>This mixin assumes you are designing mobile-first using min-width media queries and using <a href='http://sass-lang.com/' target='_blank'>Sass</a>, <a href='http://bourbon.io/' target='_blank'>Bourbon</a> and <a href='http://neat.bourbon.io/' target='_blank'>Bourbon Neat</a> in your project.</p>
+<h2 id='the_problem'>The Problem</h2>
 
 <p>Your design calls for a grid layout that can morph from 1 column on mobile to 2 columns, 3 columns, 4 columns, etc. as the viewport gets larger. Lets say at <code>min-width: 480px</code> our design uses a 2 column layout and at <code>min-width: 768px</code> it uses a 3 column layout.</p>
 
 <p>The way that Bourbon Neat handles columns is it gives the <code>nth:last-child</code> element <code>margin-right: 0</code> and the <code>nth(*+1)</code> element <code>clear:left</code>; where <code>*</code> is the number you pass to Bourbon Neat&#8217;s <code>@include omega(n)</code> mixin. For a 2 column layout it would be <code>@include omega(2n)</code>.</p>
 
 <p>When it&#8217;s time to morph the layout into 3 columns at the <code>min-width: 768px</code> media query the <code>@include omega(2n)</code> mixin from our 2 column layout gets inherited and interferes with our 3 column layout. We need the omega mixin to be <code>@include omega(3n)</code> and we need to reset the styles affected by <code>@include omega(2n)</code>. This is currently not possible with Bourbon Neat.</p>
+<h3 class='blockquote'> So, I made Omega Reset. A Sass mixin for Bourbon Neat that let's you change the number of columns at any breakpoint.</h3>
+<h2 id='how_to_use_omega_reset_in_your_html'>How to Use Omega Reset in Your HTML</h2>
 
-<h3 id='so_i_made_omega_reset_a_sass_mixin_for_bourbon_neat_that_lets_you_change_the_number_of_columns_at_any_breakpoint'>So, I made Omega Reset. A Sass mixin for Bourbon Neat that let&#8217;s you change the number of columns at any breakpoint.</h3>
-
-<h2 id='id29'><code>_author.scss</code></h2>
-
-<p>Here&#8217;s how to use <code>@include omega-reset()</code> alongside Bourbon and Bourbon Neat. <code>.thing</code> is just an arbitrary class name for our columns.</p>
-<pre><code class='language-scss'>// ------------------------------------------------------------
+<p>Here&#8217;s how to use <code>@include omega-reset()</code> alongside Bourbon and Bourbon Neat.</p>
+<pre class='filename' data-filename='_author.scss'><code class='language-scss'>// ------------------------------------------------------------
 // Neat grid using Omega Reset
 // ------------------------------------------------------------
 
-.thing {
+.columns {
   @include breakpoint(480px)  {
     @include span-columns(6);
     @include omega(2n);
@@ -70,12 +96,12 @@
 }</code></pre>
 <p>All you have to do is reset the number passed to <code>@include omega()</code> from the previous media query into your new media query if you are changing the number of columns.</p>
 
-<h2 id='id30'><code>_grid-settings.scss</code></h2>
+<h2 id='update_your_grid_settings'>Update your Grid Settings</h2>
 
 <p>This file is used to override Bourbon Neat&#8217;s grid settings. I personally feel that the default gutter width is too narrow, so I bump up the <code>$gutter: golden-ratio</code> from 1 to 3.</p>
 
 <p>In order to use <code>@include omega-reset()</code>, you need to set Bourbon&#8217;s <code>$fg-column</code> and <code>$fg-gutter</code> variables to match what Bourbon Neat is doing.</p>
-<pre><code class='language-scss'>// ------------------------------------------------------------
+<pre class='filename' data-filename='_grid-settings.scss'><code class='language-scss'>// ------------------------------------------------------------
 // Override Neat's grid settings
 // ------------------------------------------------------------
 
@@ -89,114 +115,60 @@ $gutter: golden-ratio(1em, 3) !default; // Gutter between each two columns
 
 $fg-column: $column;
 $fg-gutter: $gutter;</code></pre>
-<h2 id='id31'><code>_mixins.scss</code></h2>
+<h2 id='include_omega_reset_mixin'>Include Omega Reset Mixin</h2>
 
 <p>This mixin includes a default media query mixin that I normally start out with. I included it here because the HTML example uses it.</p>
 
 <p>The <code>omega-reset</code> mixin allows you to reset the <code>@include omega()</code> styles on new media queries so that you can change the number of columns in your design.</p>
-<pre><code class='language-scss'>// ------------------------------------------------------------
-// Media queries
-// ------------------------------------------------------------
-//
-// Useage:
-//
-// @include breakpoint(480px)  {}
-// @include breakpoint(768px)  {}
-// @include breakpoint(1024px) {}
-// @include breakpoint(1280px) {}
-// 
-// ------------------------------------------------------------
-
-@mixin breakpoint($point) {
-  @if $point == 480px {
-    @media (min-width: 30em) { @content; }
-  }
-  @else if $point == 768px {
-    @media (min-width: 48em) { @content; }
-  }
-  @else if $point == 1024px {
-    @media (min-width: 60em)  { @content; }
-  }
-  @else if $point == 1280px {
-    @media (min-width: 80em)  { @content; }
-  }
-}
-
-// ------------------------------------------------------------
-// Omega Reset for Bourbon Neat
-// ------------------------------------------------------------
-//
-// Allows you to reset omega() styles on new media queries
-// when you need to change the number of columns
-//
-// Useage:
-//
-// @include breakpoint(480px)  {
-//  @include span-columns(6);
-//  @include omega(2n);
-// }
-// @include breakpoint(768px)  {
-//  @include omega-reset(2n);
-//  @include span-columns(4);
-//  @include omega(3n);
-// }
-//
+<pre class='filename' data-filename='_mixins.scss'><code class='language-scss'>// ------------------------------------------------------------
+// Omega Reset
 // ------------------------------------------------------------
 
 @mixin omega-reset($nth) {
   &amp;:nth-child(#{$nth}) { margin-right: flex-gutter(); }
   &amp;:nth-child(#{$nth}+1) { clear: none }
-}</code></pre>
-<h2 id='id32'><code>example.html</code></h2>
-<pre><code class='language-markup'>&lt;div class="main"&gt;
-  &lt;div class="container"&gt;
+}</code></pre><div class='aside'>
+  <a class='button' href='https://github.com/joshfry/omega-reset-for-bourbon-neat'>View on Github</a>
+</div>
+</div>
 
-    &lt;div class="thing"&gt;&lt;h2&gt;Column 1&lt;/h2&gt;&lt;/div&gt;
-    &lt;div class="thing"&gt;&lt;h2&gt;Column 2&lt;/h2&gt;&lt;/div&gt;
-    &lt;div class="thing"&gt;&lt;h2&gt;Column 3&lt;/h2&gt;&lt;/div&gt;
-    &lt;div class="thing"&gt;&lt;h2&gt;Column 4&lt;/h2&gt;&lt;/div&gt;
-    &lt;div class="thing"&gt;&lt;h2&gt;Column 5&lt;/h2&gt;&lt;/div&gt;
-    &lt;div class="thing"&gt;&lt;h2&gt;Column 6&lt;/h2&gt;&lt;/div&gt;
-    &lt;div class="thing"&gt;&lt;h2&gt;Column 7&lt;/h2&gt;&lt;/div&gt;
-    &lt;div class="thing"&gt;&lt;h2&gt;Column 8&lt;/h2&gt;&lt;/div&gt;
-    &lt;div class="thing"&gt;&lt;h2&gt;Column 9&lt;/h2&gt;&lt;/div&gt;
-    &lt;div class="thing"&gt;&lt;h2&gt;Column 10&lt;/h2&gt;&lt;/div&gt;
-    &lt;div class="thing"&gt;&lt;h2&gt;Column 11&lt;/h2&gt;&lt;/div&gt;
-    &lt;div class="thing"&gt;&lt;h2&gt;Column 12&lt;/h2&gt;&lt;/div&gt;
 
-  &lt;/div&gt;&lt;!-- / container --&gt;
-&lt;/div&gt;&lt;!-- / main --&gt;</code></pre>
-<p>View more: <a href='https://github.com/joshfry/point-guard'>https://github.com/joshfry/point-guard</a></p>
+</main>
 
-		</div>
-	</div>
+<footer class="site-footer">
+  <div class="container">
+      <p class="sosumi">Made by <a href="http://twitter.com/joshfry" target="_blank">Josh Fry</a></p>
+      <div class="social">
+        <nav>
+          <a href="http://github.com/joshfry" class="github" target="_blank">
+            <i class="social-icon-github"></i>
+            <span>GitHub</span></a>
+          <a href="http://codepen.io/joshfry" class="codepen" target="_blank">
+            <i class="social-icon-codepen"></i>
+            <span>Codepen</span></a>
+          <a href="http://twitter.com/joshfry" class="twitter" target="_blank">
+            <i class="social-icon-twitter"></i>
+            <span>Twitter</span></a>
+        </nav>
+      </div>
+  </div><!-- / container -->
+</footer>
 
-	<footer class="site-footer" role="contentinfo">
-		<div class="container">
+<!-- <script src="/components/jquery/jquery.min.js"></script> -->
+<script src="/js/site.min.js"></script>
 
-			<div class="social">
-				<nav><a href="http://twitter.com/joshfry" class="twitter" data-icon="&#x61;" target="_blank"><span>Twitter</span></a><a href="http://github.com/joshfry" class="github" data-icon="&#x62;" target="_blank"><span>GitHub</span></a><a href="http://codepen.io/joshfry" class="codepen" data-icon="&#x63;" target="_blank"><span>Codepen</span></a><a href="http://forrst.me/joshfry/posts" class="forrst" data-icon="&#x64;" target="_blank"><span>Forrst</span></a><a href="http://zootool.com/user/joshfry/" class="zootool" data-icon="&#x65;" target="_blank"><span>Zoo Tool</span></a></nav>
-			</div>
-			
-			<a class="copyright" href="http://twitter.com/@joshfry">@joshfry</a>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30007230-1']);
+  _gaq.push(['_setDomainName', 'joshfry.me']);
+  _gaq.push(['_trackPageview']);
 
-		</div>
-	</footer>
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 
-	<script type="text/javascript" src="/js/app.js"></script>
-
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-30007230-1']);
-		_gaq.push(['_setDomainName', 'joshfry.me']);
-		_gaq.push(['_trackPageview']);
-
-		(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	</script>
-	
 </body>
 </html>
