@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/josh.fry/Sites/jekyll",
+			"folder_exclude_patterns": ["_site", "css"],
+			"file_exclude_patterns": ["*.sublime-project", "*.sublime-workspace"]
+		}
+	]
+}

@@ -1,28 +1,47 @@
-* { 
-	margin: 0; 
-	padding: 0;
-	@include box-sizing( border-box );
+// Reset
+// ------------------------------------------------------------
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-::selection { 
-	background: #fb9fe5; 
-	text-shadow: none;
+::selection {
+  background: $selection-color;
+  text-shadow: none;
 }
 
-img { 
-	max-width: 100%;
+a {
+  color: $link-color;
+  text-decoration: none;
+  outline: 0;
+
+  &:hover {
+    color: $link-hover-color;
+  }
+
+  img {
+    border: none;
+  }
 }
 
-a { 
-	text-decoration: none; 
-	outline: 0;
-	color: blue;
-
-	.main &:hover {
-		text-decoration: underline;
-	}
-
-	img { 
-		border: none;
-	}
+img {
+  max-width: 100%;
+  height: auto!important;
 }
+
+
+// nav ul's
+// ------------------------------------------------------------
+
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+// Helpers
+// ------------------------------------------------------------

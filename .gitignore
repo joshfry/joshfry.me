@@ -1,4 +1,7 @@
-*.sublime-project
-*.sublime-workspace
-*.DS_Store
+.DS_Store
 .sass-cache
+scss/bourbon
+scss/neat
+css
+_components
+node_modules

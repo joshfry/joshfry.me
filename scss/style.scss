@@ -1,17 +1,20 @@
-@import "bourbon/bourbon";			// Mixin library
+// Import all the sass
+// ------------------------------------------------------------
 
-@import "variables";		// Variables
-@import "mixins";			// Mixins
+@import "bourbon/bourbon";
+@import "grid-settings";
+@import "neat/neat";
 
-@import "reset";			// Reset
-@import "typography";		// Typography
-@import "prism"; 			// Syntax highlighting
+@import "variables";
+@import "mixins";
 
-@import "icomoon"; 			// Icon font
-@import "social";			// Social icons
+@import "normalize";
+@import "reset";
 
-@import "author";			// Author styles
+@import "vendor/prism"; // syntax highlighting
+@import "vendor/icomoon"; // social icon font
+@import "vendor/font-mfglabs_iconset"; // icon font
 
-@import "blog";				// Blog styles
+@import "dev";
 
-@import "junk";				// Temporary styles
+@import "author";

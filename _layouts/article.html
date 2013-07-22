@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<!-- TODO: Work on article header util. Like the footer. -->
+<!--
+<div class="article-header">
+  <nav class="article-header--util-left">
+    <a href="/"><i class="icon-arrow_left"></i></a>
+  </nav>
+  <nav class="article-header--util-right">
+    <a href="/"><i class="icon-arrow_up"></i></a>
+    <a href="/"><i class="icon-arrow_right"></i></a>
+  </nav>
+</div>
+-->
+
+<div class="container">
+  <!-- <img src="{{ page.image }}" /> -->
+  <p class="article-date">{{ page.date | date: "%B %d, %Y" }}</p>
+  <h1 class="article-title">{{page.title}}</h1>
+  {{ content }}
+</div>

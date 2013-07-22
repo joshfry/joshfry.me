@@ -1,0 +1,25 @@
+// Dev mode styles
+// ------------------------------------------------------------
+
+@if $dev-mode == true {
+  body {
+
+    &:before {
+      position: fixed;
+      bottom: .75em;
+      right: .75em;
+      padding: .5em;
+      font-family: monospace;
+      font-size: 1.125em;
+      color: #20D832;
+      background: rgba(0,0,0,.7);
+      border-radius: 3px;
+      z-index: 999;
+
+      @include breakpoint(480px)  { content: "breakpoint(480px)"; }
+      @include breakpoint(768px)  { content: "breakpoint(768px)"; }
+      @include breakpoint(1024px) { content: "breakpoint(1024px)"; }
+      @include breakpoint(1280px) { content: "breakpoint(1280px)"; }
+    }
+  }
+}

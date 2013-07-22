@@ -1,7 +1,5 @@
-auto: true
-
 permalink: /:categories/:title/
 
 pygments: true
 
-exclude: [scss, components, jekyll.sublime-project, jekyll.sublime-workspace, README.md, Guardfile, gitpull.php]
+exclude: [scss, components, js/plugins, jekyll.sublime-project, jekyll.sublime-workspace, README.md, Guardfile, gitpull.php, bower.json]
