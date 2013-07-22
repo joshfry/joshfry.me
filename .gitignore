@@ -5,5 +5,5 @@ scss/neat
 css
 _components
 node_modules
-.sublime-project
-.sublime-workspace
+*.sublime-project
+*.sublime-workspace
