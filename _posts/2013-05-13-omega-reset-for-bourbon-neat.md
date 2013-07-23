@@ -5,7 +5,7 @@ category: uncategorized
 tags: sass, bourbon, bourbon neat, mixin, frontend  
 category: notes  
 published: true  
-exerpt: Omega Reset. A Sass mixin for Bourbon Neat that let's you change the number of columns at any breakpoint.
+exerpt: A Sass mixin for Bourbon Neat that let's you change the number of columns at any breakpoint.
 
 ---
 

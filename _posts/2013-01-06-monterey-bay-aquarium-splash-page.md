@@ -8,8 +8,4 @@ published: true
 
 ---
 
-<img src="{{ post.image }}" alt="{{ post.title }}">
-
-<div class="aside">
-  <a class="button" href="http://codepen.io/joshfry/full/djGvk" target="_blank">View Online</a>
-</div>
+<a class="button" href="http://codepen.io/joshfry/full/djGvk" target="_blank">View Online</a>

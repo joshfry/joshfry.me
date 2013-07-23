@@ -2,9 +2,9 @@
 layout: default
 ---
 
-<div class="container-wide">
+<div class="container">
+  <h1 class="portfolio-title">{{page.title}}</h1>
   <!-- <p class="article-date">{{ page.date | date: "%B %d, %Y" }}</p> -->
-  <h1 class="article-title">{{page.title}}</h1>
-  <img src="{{ page.image }}" />
+  <img class="portfolio-img" src="{{ page.image }}" />
   {{ content }}
 </div>

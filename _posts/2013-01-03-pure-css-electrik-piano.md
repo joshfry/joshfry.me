@@ -8,8 +8,7 @@ published: true
 
 ---
 
-<img src="{{ post.image }}" alt="{{ post.title }}">
+As an experiment I recreated the Native Instruments Electrik Piano with HTML and CSS. No images! I'm fascinatied with the design power of CSS and this was my chance to push the limits. The HTML structure is semantic too. 
 
-<div class="aside">
-  <a class="button" href="http://codepen.io/joshfry/pen/utHlL" target="_blank">View Online</a>
-</div>
+<a class="button" href="http://codepen.io/joshfry/pen/utHlL" target="_blank">View on Codepen</a>
+

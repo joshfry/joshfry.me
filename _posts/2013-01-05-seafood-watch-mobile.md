@@ -8,8 +8,7 @@ published: true
 
 ---
 
-<img src="{{ post.image }}" alt="{{ post.title }}">
+- Redesigned Seafood Watch Mobile from the ground up; improving usability as well as making the product a delight to use.
+- Coded front-end templates (HTML, CSS, JS) to work with Sitecore CMS.
 
-<div class="aside">
-  <a class="button" href="http://mobile.seafoodwatch.org" target="_blank">View Online</a>
-</div>
+<a class="button" href="http://mobile.seafoodwatch.org" target="_blank">View Online</a>

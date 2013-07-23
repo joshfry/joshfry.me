@@ -8,8 +8,4 @@ published: true
 
 ---
 
-<img src="{{ post.image }}" alt="{{ post.title }}">
-
-<div class="aside">
-  <a class="button" href="https://github.com/joshfry/gruntled" target="_blank">View on Github</a>
-</div>
+<a class="button" href="https://github.com/joshfry/gruntled" target="_blank">View on Github</a>

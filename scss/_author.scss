@@ -84,7 +84,7 @@ body {
 
 h1, .h1 {
   font-size: 2.5em;
-  line-height: 1.25;
+  line-height: 1.15;
   font-weight: 800;
   color: $secondary-dark;
 
@@ -117,12 +117,29 @@ h3, .h3 {
   color: $secondary-dark;
 }
 
+// Fix this. Adjust font size on the <html> styles.
+// <p>'s are too small on mobile
+p {
+  font-size: 1.125em;
+
+  @include breakpoint(768px) { font-size: 1em }
+}
+
+// Fix this lame unclassed rule
+ul {
+  padding-left: $unit;
+
+  li {
+    margin: $unit;
+  }
+}
+
 .article-title {
   margin-top: $unit/2;
 }
 
 .article-date {
-  margin: $unit*2 0;
+  margin: $unit*2 0 $unit;
   color: $secondary;
 }
 
@@ -193,17 +210,17 @@ p code {
 
 
   @include breakpoint(1024px) {
-      width: 360px;
+      width: 300px;
       position: fixed;
     }
 
 }
   .logo-box {
-    @include padded(3em);
+    padding: $unit*2 $unit;
 
     @include breakpoint(1024px) {
-      width: 360px;
-      height: 300px;
+      width: 300px;
+      height: 270px;
     }
   }
   .site-avatar {
@@ -254,7 +271,7 @@ p code {
 
   @include breakpoint(1024px) {
     min-height: 600px;
-    margin-left: 360px;
+    margin-left: 300px;
   }
 }
 
@@ -337,7 +354,7 @@ p code {
 
     @include breakpoint(1024px) {
       width: 100%;
-      padding: $unit*1.25 $unit*4;
+      padding: $unit/1.5 $unit*2;
       padding-right: 0;
       float: none;
       text-align: left;
@@ -359,7 +376,7 @@ p code {
       padding: 0;
   }
   @include breakpoint(1024px) {
-      margin-left: 360px;
+      margin-left: 300px;
   }
 }
 
@@ -426,6 +443,8 @@ p code {
 // ------------------------------------------------------------
 
 .button {
+  display: inline-block;
+  margin: $unit 0;
   padding: $unit;
   color: $white;
   background: $action;
@@ -436,18 +455,6 @@ p code {
   }
 }
 
-//
-// I made this just so I can add some space to buttons at the bottom of articles.
-// Look into this another time.
-//
-// Aside
-// ------------------------------------------------------------
-
-.aside {
-  margin: $unit*3 0;
-}
-
-
 // Homepage
 // ------------------------------------------------------------
 
@@ -457,8 +464,8 @@ p code {
   list-style: none;
 
   .entry {
-    @include padded(1em);
     position: relative;
+    margin: 0;
     border-bottom: 1px solid $gray;
 
     .container {
@@ -573,6 +580,14 @@ body.nav.archives .home {
   &:after {
     display: none;
   }
+  &:hover {
+    color: $secondary;
+    background: $primary-dark;
+
+    i {
+      color: $white-smoke;
+    }
+  }
 }
 
 
@@ -586,12 +601,45 @@ body.nav.archives .home {
 // portfolio grid
 
 .potfolio-item {
-  margin: 0 0 $unit*1.5;
+  margin: 0 0 4.5%;
+  background: #000;
 
   @include breakpoint(480px)  {
     @include span-columns(6);
     @include omega(2n);
+
+    img {
+      @include breakpoint(1024) {
+        -webkit-transform: translateY(0%);
+        -moz-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+        transform: translateY(0%);
+        -webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+        -moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+        transition: transform 0.4s, opacity 0.1s 0.3s;
+
+        opacity: .75;
+        transition: .5s;
+
+        &:hover {
+          opacity: 1;
+          // -webkit-transform: scale(1.025);
+          -webkit-transform: translateY(-7%);
+          -moz-transform: translateY(-7%);
+          -ms-transform: translateY(-7%);
+          transform: translateY(-7%);
+          -webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+          -moz-transition: -moz-transform 0.4s, opacity 0.1s;
+          transition: transform 0.4s, opacity 0.1s;
+        }
+      }
+    }
   }
+  @include breakpoint(1280px) {
+      @include omega-reset(2n);
+      @include span-columns(4);
+      @include omega(3n);
+    }
   // @include breakpoint(768px)  {
   //   @include omega-reset(2n);
   //   @include span-columns(4);
@@ -611,6 +659,11 @@ body.nav.archives .home {
   img {
     display: block;
   }
+}
+
+.portfolio-img {
+  border: 5px solid $white;
+  width: 100%;
 }
 
 // Portfolio hover effects
@@ -750,4 +803,8 @@ body.nav.archives .home {
       transition: transform 0.4s, opacity 0.1s;
     }
   }
+}
+
+.portfolio-title {
+  margin: $unit/1.5 0;
 }
