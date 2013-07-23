@@ -4,7 +4,7 @@ layout: portfolio_entry
 image: /img/portfolio/github-thumb.png 
 title: I'm on Github  
 category: portfolio  
-published: true  
+published: false
 
 ---
 
