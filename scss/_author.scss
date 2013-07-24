@@ -10,9 +10,15 @@ body {
 }
 
 .container {
-  @include outer-container;
-  max-width: $container-max-width;
+  @include clearfix;
   padding: 0 $unit*1.5;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include breakpoint(1024px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .container-wide {
@@ -106,15 +112,19 @@ h2, .h2 {
   font-size: 1.75em;
   line-height: 1.25;
   font-weight: 800;
-  margin: 1.5em 0;
+  margin: 2em 0 .5em;
   color: $secondary-dark;
 }
 h3, .h3 {
   font-size: 1.25em;
   line-height: 1.25;
   font-weight: 800;
-  margin: 2em 0;
+  margin: 2em 0 .5em;
   color: $secondary-dark;
+}
+
+h4, .h4 {
+  margin: 2em 0 1em;
 }
 
 // Fix this. Adjust font size on the <html> styles.
@@ -130,7 +140,6 @@ ul {
   padding-left: $unit;
 
   li {
-    margin: $unit;
   }
 }
 
