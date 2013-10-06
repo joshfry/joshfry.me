@@ -627,11 +627,11 @@ body.nav.archives .home {
         -moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
         transition: transform 0.4s, opacity 0.1s 0.3s;
 
-        opacity: .75;
+        // opacity: .75;
         transition: .5s;
 
         &:hover {
-          opacity: 1;
+          // opacity: 1;
           // -webkit-transform: scale(1.025);
           -webkit-transform: translateY(-7%);
           -moz-transform: translateY(-7%);

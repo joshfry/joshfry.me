@@ -1,11 +1,10 @@
 ---
 
 layout: article  
-category: uncategorized  
 tags: jekyll  
 category: notes  
 published: true 
-exerpt: I redesigned my website and built it with Jekyll.
+exerpt: My new website runs on Jekyll. Yay for static site generators!
 
 ---
 
