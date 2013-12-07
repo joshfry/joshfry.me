@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width">
+
+  <title> Sass Media Query Helper For Designers |  joshfry.me</title>
+  <meta name="description" content="Josh Fry is a front end web developer currently working at @montereyaq." />
+
+  <script type="text/javascript" src="//use.typekit.net/bki8kjv.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <script src="/js/plugins/modernizr.min.js"></script>
+</head>
+<body class="nav Sass Media Query Helper For Designers">
+
+<header class="site-header">
+  <div class="logo-box">
+    <a href="/" style="display: block">
+      <div class="site-avatar"><img src="/img/josh-avatar.png" alt="Josh Fry avatar"></div>
+      <h1 class="site-title"><a href="/">Josh Fry</a></h1>
+      <h2 class="site-subtitle">Front End Developer &amp; Designer</h2>
+    </a>
+  </div>
+  <nav class="site-nav">
+    <a href="/" class="home"><i class="icon-home"></i>Home</a>
+    <a href="/portfolio" class="portfolio"><i class="icon-eye"></i>Portfolio</a>
+    <a href="/about" class="about"><i class="icon-user_male"></i>About</a>
+    <a href="/archives" class="archives"><i class="icon-newspaper"></i>Archives</a>
+  </nav>
+</header>
+
+<main class="site-main"> <!-- add class .art-direction -->
+
+  <!-- TODO: Create a hero unit -->
+  <!-- <div class="hero-unit">
+    <img src="http://placehold.it/2000x500" alt="">
+  </div> -->
+
+    <!-- TODO: Work on article header util. Like the footer. -->
+<!--
+<div class="article-header">
+  <nav class="article-header--util-left">
+    <a href="/"><i class="icon-arrow_left"></i></a>
+  </nav>
+  <nav class="article-header--util-right">
+    <a href="/"><i class="icon-arrow_up"></i></a>
+    <a href="/"><i class="icon-arrow_right"></i></a>
+  </nav>
+</div>
+-->
+
+<div class="container">
+  <!-- <img src="" /> -->
+  <p class="article-date">December 06, 2013</p>
+  <h1 class="article-title">Sass Media Query Helper For Designers</h1>
+  <p>A configurable design helper that displays the current min-width media query in the bottom right corner of your screen and updates as you re-size the browser window. When designing in the browser, you&#8217;ll know exactly which media query you can add styles to when things start to look weird.</p>
+
+<h2 id='assumptions'>Assumptions</h2>
+
+<ul>
+<li>Designing mobile-first using min-width media queries</li>
+
+<li>Using ems for all units</li>
+
+<li>Using Scss flavor of Sass</li>
+
+<li>You want a better experience when designing in the browser</li>
+</ul>
+<h3 class='blockquote'>This configurable media query helper uses the Sass @for directive to output incremental min-width media queries in your css and displays those values on screen by injecting content to the body:before element.</h3>
+<h2 id='tldr'>TL;DR</h2>
+
+<p><a href='http://codepen.io/joshfry/pen/DeACs'>View on CodePen</a></p>
+<pre class='filename'><code class='language-scss'>// -------------------------------------------
+// Sass Media Query Helper for Designers
+// -------------------------------------------
+
+$max-width: em(1200);
+$show_media_queries: true;
+
+@mixin media-query-helper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  padding: .5em .75em;
+  font-family: monospace;
+  font-size: 1.125em;
+  line-height: 1;
+  color: #20D832;
+  background: rgba(0,0,0,.8);
+}
+
+@if $show_media_queries == true {
+
+  $starting-at: 30em;
+  $increment-by: 5em;
+
+  $from: floor($starting-at/$increment-by);
+
+  body {
+    &amp;:before {
+      @include media-query-helper;
+
+      @for $i from $from through floor($max-width/$increment-by) {
+        @media screen and (min-width: #{$i * $increment-by}) {
+          content: "@include media(#{$i * $increment-by})";
+        }
+      }
+    }
+  }
+}</code></pre>
+<h2 id='how_it_works'>How it works</h2>
+
+<h3 id='the_sass_for_loop_requires_3_variables'>The Sass @for loop requires 3 variables</h3>
+
+<ul>
+<li>$max-width: max-width of the page container;</li>
+
+<li>$starting-at: min-width the MQ Helper should appear on screen;</li>
+
+<li>$increment-by: display the screen min-width every ($nth)ems</li>
+</ul>
+
+<h4 id='set_a_maxwidth_for_your_container'>Set a max-width for your container</h4>
+
+<p>If using Bourbon Neat, this is set in <code>_grid-settings.scss</code>. <code>em()</code> is a function from Bourbon that converts px tp ems.</p>
+
+<pre><code>$max-width: em(1200);</code></pre>
+
+<h4 id='show_or_hide_the_mq_helper'>Show or hide the MQ Helper</h4>
+
+<p>It should definitely be set to false in production!</p>
+
+<pre><code>$show_media_queries: true;</code></pre>
+
+<h4 id='the_mq_helper_design_styles'>The MQ Helper design styles</h4>
+
+<p>I made this a mixin so that the @if statement would be more readable.</p>
+
+<pre><code>@mixin media-query-helper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  padding: .5em .75em;
+  font-family: monospace;
+  font-size: 1.125em;
+  line-height: 1;
+  color: #20D832;
+  background: rgba(0,0,0,.8);
+}</code></pre>
+
+<p>If <code>$show_media_queries</code> is set to true, show the MQ Helper on screen</p>
+
+<pre><code>@if $show_media_queries == true {</code></pre>
+
+<h4 id='when_should_the_mq_helper_become_visible'>When should the MQ Helper become visible?</h4>
+
+<p>Assuming the design is mobile-first, don&#8217;t display any media query info because we&#8217;re not writing any styles that are nested in media queries. Edit this variable to your liking.</p>
+
+<pre><code>$starting-at: 30em;</code></pre>
+
+<h4 id='how_many_ems_should_the_mq_helper_increment_as_you_resize_the_browser_window_edit_this_variable_to_your_liking'>How many ems should the MQ Helper increment as you resize the browser window? Edit this variable to your liking.</h4>
+
+<pre><code>$increment-by: 5em;</code></pre>
+
+<h4 id='tell_the_for_loop_when_to_start_showing_mqs_on_the_screen'>Tell the @for loop when to start showing MQ&#8217;s on the screen.</h4>
+
+<p>Divide $starting-at by $increment-by. With the default settings, it will look like this: 30em/5em - which gives us 6em. That statement is wrapped in a floor() Sass function which removes the em unit and returns the closest integer, rounded down. Don&#8217;t edit this variable!</p>
+
+<pre><code>$from: floor($starting-at/$increment-by);</code></pre>
+
+<p>We&#8217;re injecting the current min-width media query onto the page using css <code>content:&#39;&#39;</code> on the <code>body:before</code> element.</p>
+
+<pre><code>body {
+  &amp;:before {</code></pre>
+
+<p>Include the design styles for the MQ Helper</p>
+
+<pre><code>@include media-query-helper;</code></pre>
+
+<h4 id='the__for_loop'>The @ for loop</h4>
+
+<pre><code>@for $i from $from through floor($max-width/$increment-by) {
+  @media screen and (min-width: #{$i * $increment-by}) {
+    content: &quot;@include media(#{$i * $increment-by})&quot;;
+  }
+}</code></pre>
+
+<h4 id='the__for_loop_explained'>The @ for loop, explained</h4>
+
+<p>Here&#8217;s what the @for loop looks like when the variables are replaced (using the default settings):</p>
+
+<pre><code>@for $i from 6 through 15</code></pre>
+
+<p>So, this loop will run 10 times starting at 6 and ending at 15.</p>
+
+<p>Each time the loop runs, $i is updated with a new value. The first time the loop runs, $i = 30 because 6 * 5 = 30. The 2nd time the loop runs, $i = 35 because 7 * 5 = 35&#8230; and so on. Since floor() isn&#8217;t being used on those variables, the output is actually in ems.</p>
+
+<p>The actual output of our media query for the first loop looks like this:</p>
+
+<pre><code>@media screen and (30em) {</code></pre>
+
+<p>And the css <code>content:&#39;&#39;</code>, which has the same output looks like this:</p>
+
+<pre><code>content: &quot;@include media(30em)&quot;</code></pre>
+
+<p>I personally use Bourbon Neat, so for me, I like to see the Neat syntax on screen. Hence the <code>@include media()</code> included in the css <code>content:&#39;&#39;</code></p>
+
+<h4 id='the_final_css_output_looks_like_this'>The final css output looks like this:</h4>
+
+<pre><code>@media screen and (min-width: 30em) {
+  body:before {
+  content: &quot;@include media(30em)&quot;; } }
+@media screen and (min-width: 35em) {
+  body:before {
+  content: &quot;@include media(35em)&quot;; } }
+@media screen and (min-width: 40em) {
+  body:before {
+  content: &quot;@include media(40em)&quot;; } }
+
+// ...and so on. Until it reaches $max-width.</code></pre>
+
+<p><a href='http://codepen.io/joshfry/pen/DeACs'>See it in action on CodePen</a></p>
+</div>
+
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+      <p class="sosumi">Made by <a href="http://twitter.com/joshfry" target="_blank">Josh Fry</a></p>
+      <div class="social">
+        <nav>
+          <a href="http://github.com/joshfry" class="github" target="_blank">
+            <i class="social-icon-github"></i>
+            <span>GitHub</span></a>
+          <a href="http://codepen.io/joshfry" class="codepen" target="_blank">
+            <i class="social-icon-codepen"></i>
+            <span>Codepen</span></a>
+          <a href="http://twitter.com/joshfry" class="twitter" target="_blank">
+            <i class="social-icon-twitter"></i>
+            <span>Twitter</span></a>
+        </nav>
+      </div>
+  </div><!-- / container -->
+</footer>
+
+<!-- <script src="/components/jquery/jquery.min.js"></script> -->
+<script src="/js/site.min.js"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30007230-1']);
+  _gaq.push(['_setDomainName', 'joshfry.me']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</body>
+</html>
