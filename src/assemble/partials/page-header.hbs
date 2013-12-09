@@ -1,0 +1,15 @@
+<header class="page-header">
+  {{#if date}}
+    <p class="article-date">{{formatDate date "%B %d, %Y"}}</p>
+  {{/if}}
+
+  {{#if pageTitle}}
+    <h1 class="page-title">{{capitalizeEach pageTitle}}</h1>
+    {{else}}
+    <h1 class="page-title">{{capitalizeEach title}}</h1>
+  {{/if}}
+
+  {{#if description}}
+    <p class="intro">{{description}}</p>
+  {{/if}}
+</header>

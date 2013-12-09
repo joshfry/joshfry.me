@@ -1,0 +1,16 @@
+<ul class="entries">
+{{#withSort pages "data.sortOrder" }}
+  {{#if data.sortOrder}}
+    <li class="entry">
+      <a class="entry-post-link" href="notes/{{hyphenate data.title}}/">
+        <div class="container">
+          <!-- <img src="{{ post.image }}" /> -->
+          <p class="article-date">{{formatDate data.date "%B %d, %Y"}}</p>
+          <h1 class="article-title">{{ capitalizeEach data.title }}</h1>
+          <h2 class="intro">{{ data.description }}</h2>
+        </div>
+      </a>
+    </li>
+  {{/if}}
+{{/withSort}}
+</ul>

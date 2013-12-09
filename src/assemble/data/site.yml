@@ -1,0 +1,17 @@
+# Server
+port: 8000
+
+# Bower directory
+bower: dist/assets/bower
+
+# Site build variables
+dev: dist
+prod: _site
+assets: assets
+assemble: src/assemble
+
+# Site info
+name: Josh Fry
+
+# Typekit info
+typekitID: hts2zpg

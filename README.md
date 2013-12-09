@@ -1,16 +1,5 @@
-[http://joshfry.me](http://joshfry.me)  
-Josh Fry's personal website.
+# My personal website
 
----
+## Now using [Assemble](Assemble.io)!
 
-**Toolchain**
-
-- [Jekyll](http://jekyllrb.com)
-- [Sass](http://sass-lang.com)
-- [Guard](https://github.com/guard/guard)
-- [Bower](http://bower.io)
-- [Git](http://git-scm.com)
-
-**Dev**
-
-- Explain dev environment
+[joshfry.me](http://joshfry.me)

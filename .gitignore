@@ -1,9 +1,18 @@
+# Dot files
 .DS_Store
 .sass-cache
-scss/bourbon
-scss/neat
-css
-_components
+.bundle
+
+# Directories
+tmp
+dist
+build
+vendor
+
+# Node
 node_modules
+npm-debug.log
+
+# Sublime
 *.sublime-project
 *.sublime-workspace

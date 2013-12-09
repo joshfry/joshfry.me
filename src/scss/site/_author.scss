@@ -1,0 +1,341 @@
+// -------------------------------------------------------------------
+// Author
+// -------------------------------------------------------------------
+
+@mixin vert-sep {
+  padding-top: 2em;
+  margin-top: 2em;
+  border-top: 1px solid #ccc;
+}
+.vert-sep {
+  @include vert-sep;
+}
+
+// -------------------------------------------------------------------
+
+// Mobile nav breakpoint
+$mobile-nav-breakpoint: 10000em; // TODO: Design this later
+
+.branding {
+  @include clearfix;
+  padding: 1.5em 0;
+  display: block;
+  text-align: center;
+
+  @include media($mobile-nav-breakpoint) {
+    margin-right: $unit;
+    float: left;
+  }
+
+  .site-logo {
+    display: block;
+    border-radius: 100%;
+    margin: auto;
+    box-shadow: 0 0 0 5px $primary-light;
+
+    @include media(30em) {
+      float: left;
+      margin-right: 1.5em;
+    }
+  }
+
+  .title {
+    margin: .5em 0 .125em;
+    font-family: $sans-serif;
+    font-size: 1.5em;
+    color: $primary-darker;
+
+    @include media(30em) {
+      margin-top: 1em;
+    }
+  }
+  .subtitle {
+    margin: 0;
+    font-size: 1.25em;
+    font-family: $serif;
+    font-weight: 300;
+    color: $primary-lighter;
+    font-style: italic;
+    letter-spacing: 0;
+  }
+
+  .title,
+  .subtitle {
+    @include media(30em) {
+      text-align: left;
+    }
+  }
+}
+
+// Site Nav
+// ------------------------------------------------------------
+
+.site-nav {
+  @include clearfix;
+  background: $secondary;
+
+  .nav-links {
+    height: 0;
+    overflow: hidden;
+
+    @include media($mobile-nav-breakpoint) {
+      height: auto;
+      overflow: auto;
+    }
+
+    a {
+      i {
+        position: relative;
+        margin-right: .375em;
+      }
+
+      &:hover {
+        color: $primary;
+        background: $secondary-dark;
+
+        i {
+          color: $white;
+        }
+      }
+    }
+
+    .nav-right {
+      @include media($mobile-nav-breakpoint) {
+        float: right;
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+
+// Mobile Menu
+// ------------------------------------------------------------
+
+.mobile-menu {
+  @include button-reset;
+  position: absolute;
+  top: $unit*3;
+  right: $unit;
+  z-index: 2;
+  text-align: center;
+  color: $primary-darker;
+
+  @include media($mobile-nav-breakpoint) {
+    display: none;
+  }
+
+  .icon {
+    display: block;
+    font-size: 2em;
+    line-height: 0;
+    padding: $unit $unit/2;
+    color: inherit;
+    cursor: pointer;
+  }
+}
+
+// Menu active
+.menu-active {
+  .mobile-menu {
+    color: $primary-lighter;
+  }
+
+  .site-nav {
+    padding: .75em 0;
+
+    @include media(45em) {
+      padding: 0;
+    }
+  }
+
+  .nav-links {
+    height: auto;
+    overflow: auto;
+
+    a {
+      display: block;
+      padding: $unit*.75 0;
+      text-align: center;
+      color: $white-smoke;
+      font-weight: bold;
+
+      @include media(45em) {
+        display: block;
+        float: left;
+        line-height: 0;
+        height: 0;
+        padding: 2.5em 1.75em;
+        border-right: 1px solid #1F2B37;
+
+        &:first-of-type {
+          border-left: 1px solid #1F2B37;
+        }
+      }
+    }
+  }
+}
+
+// -------------------------------------------------------------------
+
+body {
+  border-top: 5px solid $primary-dark;
+}
+
+.site-header {
+  background: $primary;
+}
+
+.site-main {
+  padding: 2.5em 0;
+  border-top: 5px solid #ccc;
+}
+
+.site-footer {
+  padding: 1.5em 0;
+  border-top: 1px solid #ccc;
+
+  .copyright, .badge {
+    text-align: center;
+  }
+
+  @include media(30em) {
+    .content {
+      // font-size: .9em;
+    }
+    .copyright, .badge {
+      margin: 0;
+      float: left;
+    }
+    .badge {
+      float: right;
+    }
+  }
+}
+
+.site-footer {
+  padding: 1.5em 0;
+  background: darken($white-smoke,5%);
+  border-top: 1px solid $gray;
+  border-bottom: 5px solid darken($gray,20%);
+  @include media(30em) {
+      padding: 0;
+  }
+
+  .copyright {
+    @include media(30em) {
+      padding: 1.5em 0;
+    }
+  }
+}
+
+// Social
+// ------------------------------------------------------------
+
+.social {
+  text-align: center;
+
+  @include media(480px) {
+    float: right;
+    margin-right: -1.5em;
+
+    a {
+      float: left;
+      border-right: 1px solid $gray;
+
+      &:first-of-type {
+        border-left: 1px solid $gray;
+      }
+    }
+  }
+
+  a {
+    padding: .1em .675em;
+    font-size: 2em;
+    line-height: 2;
+    color: $secondary;
+
+    @include transition ( color .75s );
+
+    &:hover {
+      @include transition ( color 0 );
+    }
+
+    span {
+      font-size: 0;
+      line-height: 0;
+      position: absolute;
+    }
+  }
+}
+
+.twitter:hover { color: #00a0d1 }
+.github:hover { color: #4183c4 }
+.codepen:hover { color: #EF6907 }
+
+// Portfolio
+// -------------------------------------------------------------------
+
+.portfolio {
+  @include clearfix;
+
+  .item {
+    @include span-columns(6);
+    @include omega(2n);
+
+    position: relative;
+    margin-bottom: 1.5em;
+
+    img {
+      @include rounded-corners;
+      display: block;
+    }
+
+    .details {
+
+      .title {
+        position: absolute;
+        bottom: 0;
+        margin: 0;
+        padding: .5em;
+        width: 100%;
+        font-size: 1em;
+        letter-spacing: 0;
+        background: rgba(0,0,0,.85);
+        color: $primary;
+      }
+    }
+  }
+}
+
+
+
+// Homepage
+
+.entries {
+  @extend %ul-reset;
+
+  .entry {
+    padding: 2em 0;
+    border-bottom: 1px solid #ccc;
+
+    &:hover * {
+      color: $primary;
+    }
+
+    &:first-of-type {
+      padding-top: 0;
+    }
+
+    .article-title {
+      font-size: 2em;
+      margin: .125em 0;
+    }
+    .intro {
+      font-weight: normal;
+      letter-spacing: 0;
+      font-size: 1.125em;
+      margin: .125em 0;
+    }
+  }
+}
