@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width">
-        <title>Front End Dev Notes | Josh Fry</title>
+        <title>IOS7 Orientation Zoom Bug Fix | Josh Fry</title>
         <meta content="" name="description" />
         <script type="text/javascript" src="//use.typekit.net/hts2zpg.js"></script>
         <script type="text/javascript">
@@ -44,44 +44,12 @@
             <div class="container">
                 <div class="content">
                     <header class="page-header">
-                        <p class="article-date">December 22, 2013</p>
-                        <h1 class="page-title">Front End Dev Notes</h1>
-                        <p class="intro">Random notes, things I just want to remember, or quite possibly future post ideas.</p>
+                        <p class="article-date">March 14, 2013</p>
+                        <h1 class="page-title">IOS7 Orientation Zoom Bug Fix</h1>
+                        <p class="intro">Need I say more?</p>
                     </header>
-                    <hr>
-                    <h2 id="-editorconfig-settings">.editorconfig Settings</h2>
-                    <pre><code class="language-bash"><span class="comment"># editorconfig.org</span>
-root = <span class="literal">true</span>
-[*]
-indent_style = space
-indent_size = <span class="number">2</span>
-end_of_line = lf
-charset = utf-<span class="number">8</span>
-trim_trailing_whitespace = <span class="literal">true</span>
-insert_final_newline = <span class="literal">true</span>
-[*.md]
-trim_trailing_whitespace = <span class="literal">false</span></code></pre>
-                    <hr>
-                    <h2 id="use-npm-without-sudo">Use npm without sudo</h2>
-                    <pre><code class="language-bash">$ <span class="built_in">sudo</span> chown -R `whoami` ~/.npm</code></pre>
-                    <hr>
-                    <h2 id="livereload-js">Livereload js</h2>
-                    <pre><code class="language-javascript">&lt;script&gt;
-  document.write(<span class="string">'&lt;script src="http://'</span> + (location.host || <span class="string">'localhost'</span>).split(<span class="string">':'</span>)[<span class="number">0</span>] + <span class="string">':35729/livereload.js?snipver=1"&gt;&lt;/'</span> + <span class="string">'script&gt;'</span>);
-<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></code></pre>
-                    <hr>
-                    <h2 id="svg-support-in-jekyll">SVG support in Jekyll</h2>
-                    <p>I found the following solution on <a href="http://stackoverflow.com/questions/13687030/how-do-i-configure-jekyll-to-serve-svg">Stack Overflow</a>:</p>
-                    <ol>
-                        <li>Create a <code>_plugins</code> directory in the root of your Jekyll project.</li>
-                        <li>Create a file called <code>svg_mime_type.rb</code> in <code>_plugins</code>
-                        </li>
-                        <li>Add this to <code>svg_mime_type.rb:</code>
-                        </li>
-                    </ol>
-                    <pre><code class="language-bash">require <span class="string">'webrick'</span>
-include WEBrick
-WEBrick::HTTPUtils::DefaultMimeTypes.store <span class="string">'svg'</span>, <span class="string">'image/svg+xml'</span></code></pre>
+                    <p>This seems to fix the orientation zoom bug on iOS7 without the aid of CSS or Javascript hacks.</p>
+                    <pre><code class="language-markup">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0,minimum-scale=1.0&quot; /&gt;</code></pre>
                 </div>
             </div>
         </main>

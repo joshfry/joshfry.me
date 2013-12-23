@@ -1,40 +1,14 @@
 ---
-date: 2013-05-01
+date: 2013-12-23
 title: front end dev notes
 description: Random notes, things I just want to remember, or quite possibly future post ideas.
 category: notes
 tags: frontend, notes
 published: true
-sortOrder: 9999
+sortOrder: 9003
 ---
 
 {{#markdown}}
-
-## Use Pow with iOS devices
-
-Say your development computer’s LAN IP address is `10.0.0.1`. With the new version of Pow, you can now access your app at `http://myapp.10.0.0.1.xip.io/`. And xip.io supports wildcard DNS, so any and all subdomains of 10.0.0.1.xip.io resolve too.
-
-[View More](http://37signals.com/svn/posts/3191-announcing-pow-040-with-xipio-support)
-
----
-
-## PNG compression from the command line
-
-1. Download the pngquant binaries from [http://pngquant.org](http://pngquant.org)
-2. Move the directory to /usr/local
-3. Add the following to your `.bashrc` file to make it executable.
-
-```bash
-# pngquant - tinypng from the commandline
-export PATH="/usr/local/pngquant:$PATH"
-```
-
-4. I created an alias to `$ pngoptim`.
-
-```bash
-# pngquant alias
-alias pngoptim="pngquant *.png --ext .png -v -f"
-```
 
 ---
 
