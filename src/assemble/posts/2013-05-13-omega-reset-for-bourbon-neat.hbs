@@ -10,87 +10,106 @@ sortOrder: 9002
 
 {{#markdown}}
 
-This mixin assumes you are designing mobile-first using min-width media queries and using [Sass](http://sass-lang.com), [Bourbon](http://bourbon.io) and [Bourbon Neat](http://neat.bourbon.io) in your project.
+<div style="border: 2px solid #268BD2; padding: 1em; text-align: center; color: #268BD2">
+  **Updated April 23, 2014:** New Neat syntax for declaring media queries `@include media(){}`
+</div>
 
-## The Problem
+> This mixin assumes you are designing mobile-first using min-width media queries and using [Sass](http://sass-lang.com), [Bourbon](http://bourbon.io) and [Bourbon Neat](http://neat.bourbon.io) in your project.
 
-Your design calls for a grid layout that can morph from 1 column on mobile to 2 columns, 3 columns, 4 columns, etc. as the viewport gets larger. Lets say at `min-width: 480px` our design uses a 2 column layout and at `min-width: 768px` it uses a 3 column layout.
+## The Senario
 
-The way that Bourbon Neat handles columns is it gives the `nth:last-child` element `margin-right: 0` and the `nth(*+1)` element `clear:left`; where `*` is the number you pass to Bourbon Neat's `@include omega(n)` mixin. For a 2 column layout it would be `@include omega(2n)`.
+Your design needs a grid layout with one column on mobile. As the viewport gets larger, the number of columns need to increase.
 
-When it's time to morph the layout into 3 columns at the `min-width: 768px` media query the `@include omega(2n)` mixin from our 2 column layout gets inherited and interferes with our 3 column layout. We need the omega mixin to be `@include omega(3n)` and we need to reset the styles affected by `@include omega(2n)`. This is currently not possible with Bourbon Neat.
+For instance, at `min-width: 30em` the design uses a 2 column layout:
 
-> So, I made Omega Reset. A Sass mixin for Bourbon Neat that let's you change the number of columns at any breakpoint.
-
-## How to Use Omega Reset in Your HTML
-
-Here's how to use `@include omega-reset()` alongside Bourbon and Bourbon Neat.
-
-```scss
-// ------------------------------------------------------------
-// Neat grid using Omega Reset
-// ------------------------------------------------------------
-
-.columns {
-  @include breakpoint(480px)  {
-    @include span-columns(6);
-    @include omega(2n);
-  }
-  @include breakpoint(768px)  {
-    @include omega-reset(2n);
-    @include span-columns(4);
-    @include omega(3n);
-  }
-  @include breakpoint(1024px) {
-    @include omega-reset(3n);
-    @include span-columns(3);
-    @include omega(4n);
-  }
-  @include breakpoint(1280px) {
-    @include omega-reset(4n);
-    @include span-columns(2);
-    @include omega(6n);
+``` scss
+.grid {
+  > div {
+    @include media(30em) {
+      @include span-columns(6);
+      @include omega(2n);
+    }
   }
 }
 ```
 
-All you have to do is reset the number passed to `@include omega()` from the previous media query into your new media query if you are changing the number of columns.
+By using `@include omega(2n)` Bourbon Neat gives `.grid > div:last-child { margin-right: 0 }` and the `.grid > div:nth(2n+1) { clear:left }`
 
-## Update your Grid Settings
+Now, moving on to a 3 column layout at `min-width: 48em`:
 
-This file is used to override Bourbon Neat's grid settings. I personally feel that the default gutter width is too narrow, so I bump up the `$gutter: golden-ratio` from 1 to 3.
+``` scss
+.grid {
+  > div {
+    @include media(48em) {
+      @include span-columns(4);
+      @include omega(3n);
+    }
+  }
+}
+```
 
-In order to use `@include omega-reset()`, you need to set Bourbon's `$fg-column` and `$fg-gutter` variables to match what Bourbon Neat is doing.
+The problem is that the `@include omega(2n)` mixin from earlier is inherited and breaks the 3 column layout. It `needs to be reset and changed to `@include omega(3n)`.
+
+## A Solution
+
+`@include omega-reset` allows you to reset the `@include omega()` styles on new media queries so that you can change the number of columns in your design.
 
 ```scss
 // ------------------------------------------------------------
-// Override Neat's grid settings
+// Omega Reset Mixin
 // ------------------------------------------------------------
 
-$column: golden-ratio(1em, 3) !default; // Column width
-$gutter: golden-ratio(1em, 3) !default; // Gutter between each two columns
+@mixin omega-reset($nth) {
+  &:nth-child(#{$nth}) { margin-right: flex-gutter(); }
+  &:nth-child(#{$nth}+1) { clear: none }
+}
+```
 
+#### For this to work, you'll need to add or update [Bourbon Neat's grid settings](https://github.com/thoughtbot/neat#getting-started).
+
+Set [Bourbon's Flex Grid variables](http://bourbon.io/docs/#flex-grid) `$fg-column` and `$fg-gutter` to match what Bourbon Neat is doing:
+
+```scss
 // ------------------------------------------------------------
-// Set Bourbon's flex-grid variables to match what Neat is doing
-// http://bourbon.io/docs/#flex-grid
+// _grid-settings.scss
+// See: https://github.com/thoughtbot/neat#getting-started
 // ------------------------------------------------------------
 
 $fg-column: $column;
 $fg-gutter: $gutter;
 ```
 
-## Include Omega Reset Mixin
+## Usage
 
-The `omega-reset` mixin allows you to reset the `@include omega()` styles on new media queries so that you can change the number of columns in your design.
+Reset the number passed to `@include omega()` from the previous media query into your new media query when changing the number of columns.
 
 ```scss
 // ------------------------------------------------------------
-// Omega Reset
+// A Neat grid using Omega Reset
 // ------------------------------------------------------------
 
-@mixin omega-reset($nth) {
-  &amp;:nth-child(#{$nth}) { margin-right: flex-gutter(); }
-  &amp;:nth-child(#{$nth}+1) { clear: none }
+.grid {
+  > div {
+    @include media(30em)  {
+      @include span-columns(6);
+      @include omega(2n);
+    }
+    @include media(48em)  {
+      @include omega-reset(2n); // Reset previous @include omega()
+      @include span-columns(4);
+      @include omega(3n);
+    }
+    @include media(64em) {
+      @include omega-reset(3n); // Reset previous @include omega()
+      @include span-columns(3);
+      @include omega(4n);
+    }
+    @include media(80em) {
+      @include omega-reset(4n); // Reset previous @include omega()
+      @include span-columns(2);
+      @include omega(6n);
+    }
+  }
 }
 ```
 

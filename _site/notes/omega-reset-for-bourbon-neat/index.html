@@ -48,66 +48,80 @@
                         <h1 class="page-title">Omega Reset For Bourbon Neat</h1>
                         <p class="intro">A Sass mixin for Bourbon Neat that let&#x27;s you change the number of columns at any breakpoint.</p>
                     </header>
-                    <p>This mixin assumes you are designing mobile-first using min-width media queries and using <a href="http://sass-lang.com">Sass</a>, <a href="http://bourbon.io">Bourbon</a> and <a href="http://neat.bourbon.io">Bourbon Neat</a> in your project.</p>
-                    <h2 id="the-problem">The Problem</h2>
-                    <p>Your design calls for a grid layout that can morph from 1 column on mobile to 2 columns, 3 columns, 4 columns, etc. as the viewport gets larger. Lets say at <code>min-width: 480px</code> our design uses a 2 column layout and at <code>min-width: 768px</code> it
-                        uses a 3 column layout.</p>
-                    <p>The way that Bourbon Neat handles columns is it gives the <code>nth:last-child</code> element <code>margin-right: 0</code> and the <code>nth(*+1)</code> element <code>clear:left</code>; where <code>*</code> is the number you pass to Bourbon
-                        Neat&#39;s <code>@include omega(n)</code> mixin. For a 2 column layout it would be <code>@include omega(2n)</code>.</p>
-                    <p>When it&#39;s time to morph the layout into 3 columns at the <code>min-width: 768px</code> media query the <code>@include omega(2n)</code> mixin from our 2 column layout gets inherited and interferes with our 3 column layout. We need the
-                        omega mixin to be <code>@include omega(3n)</code> and we need to reset the styles affected by <code>@include omega(2n)</code>. This is currently not possible with Bourbon Neat.</p>
+                    <div style="border: 2px solid #268BD2; padding: 1em; text-align: center; color: #268BD2">
+                        <strong>Updated April 23, 2014:</strong> New Neat syntax for declaring media queries <code>@include media(){}</code>
+                    </div>
                     <blockquote>
-                        <p>So, I made Omega Reset. A Sass mixin for Bourbon Neat that let&#39;s you change the number of columns at any breakpoint.</p>
+                        <p>This mixin assumes you are designing mobile-first using min-width media queries and using <a href="http://sass-lang.com">Sass</a>, <a href="http://bourbon.io">Bourbon</a> and <a href="http://neat.bourbon.io">Bourbon Neat</a> in your
+                            project.</p>
                     </blockquote>
-                    <h2 id="how-to-use-omega-reset-in-your-html">How to Use Omega Reset in Your HTML</h2>
-                    <p>Here&#39;s how to use <code>@include omega-reset()</code> alongside Bourbon and Bourbon Neat.</p>
-                    <pre><code class="language-scss"><span class="comment">// ------------------------------------------------------------</span>
-<span class="comment">// Neat grid using Omega Reset</span>
-<span class="comment">// ------------------------------------------------------------</span>
-<span class="class">.columns</span> {
-  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> breakpoint</span>(<span class="number">480</span>px)  {</span>
-    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> span-columns</span>(<span class="number">6</span>);</span>
-    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega</span>(<span class="number">2</span>n);</span>
-  }
-  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> breakpoint</span>(<span class="number">768</span>px)  {</span>
-    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega-reset</span>(<span class="number">2</span>n);</span>
-    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> span-columns</span>(<span class="number">4</span>);</span>
-    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega</span>(<span class="number">3</span>n);</span>
-  }
-  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> breakpoint</span>(<span class="number">1024</span>px) {</span>
-    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega-reset</span>(<span class="number">3</span>n);</span>
-    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> span-columns</span>(<span class="number">3</span>);</span>
-    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega</span>(<span class="number">4</span>n);</span>
-  }
-  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> breakpoint</span>(<span class="number">1280</span>px) {</span>
-    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega-reset</span>(<span class="number">4</span>n);</span>
-    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> span-columns</span>(<span class="number">2</span>);</span>
-    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega</span>(<span class="number">6</span>n);</span>
+                    <h2 id="the-senario">The Senario</h2>
+                    <p>Your design needs a grid layout with one column on mobile. As the viewport gets larger, the number of columns need to increase.</p>
+                    <p>For instance, at <code>min-width: 30em</code> the design uses a 2 column layout:</p>
+                    <pre><code class="language-scss"><span class="class">.grid</span> {
+  &gt; <span class="tag">div</span> {
+    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> media</span>(<span class="number">30</span>em) {</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> span-columns</span>(<span class="number">6</span>);</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega</span>(<span class="number">2</span>n);</span>
+    }
   }
 }</code></pre>
-                    <p>All you have to do is reset the number passed to <code>@include omega()</code> from the previous media query into your new media query if you are changing the number of columns.</p>
-                    <h2 id="update-your-grid-settings">Update your Grid Settings</h2>
-                    <p>This file is used to override Bourbon Neat&#39;s grid settings. I personally feel that the default gutter width is too narrow, so I bump up the <code>$gutter: golden-ratio</code> from 1 to 3.</p>
-                    <p>In order to use <code>@include omega-reset()</code>, you need to set Bourbon&#39;s <code>$fg-column</code> and <code>$fg-gutter</code> variables to match what Bourbon Neat is doing.</p>
+                    <p>By using <code>@include omega(2n)</code> Bourbon Neat gives <code>.grid &gt; div:last-child { margin-right: 0 }</code> and the <code>.grid &gt; div:nth(2n+1) { clear:left }</code>
+                    </p>
+                    <p>Now, moving on to a 3 column layout at <code>min-width: 48em</code>:</p>
+                    <pre><code class="language-scss"><span class="class">.grid</span> {
+  &gt; <span class="tag">div</span> {
+    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> media</span>(<span class="number">48</span>em) {</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> span-columns</span>(<span class="number">4</span>);</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega</span>(<span class="number">3</span>n);</span>
+    }
+  }
+}</code></pre>
+                    <p>The problem is that the <code>@include omega(2n)</code> mixin from earlier is inherited and breaks the 3 column layout. It <code>needs to be reset and changed to</code>@include omega(3n)`.</p>
+                    <h2 id="a-solution">A Solution</h2>
+                    <p><code>@include omega-reset</code> allows you to reset the <code>@include omega()</code> styles on new media queries so that you can change the number of columns in your design.</p>
                     <pre><code class="language-scss"><span class="comment">// ------------------------------------------------------------</span>
-<span class="comment">// Override Neat's grid settings</span>
+<span class="comment">// Omega Reset Mixin</span>
 <span class="comment">// ------------------------------------------------------------</span>
-$column<span class="value">: golden-ratio(<span class="number">1</span>em, <span class="number">3</span>) !default;</span> <span class="comment">// Column width</span>
-$gutter<span class="value">: golden-ratio(<span class="number">1</span>em, <span class="number">3</span>) !default;</span> <span class="comment">// Gutter between each two columns</span>
-<span class="comment">// ------------------------------------------------------------</span>
-<span class="comment">// Set Bourbon's flex-grid variables to match what Neat is doing</span>
-<span class="comment">// http://bourbon.io/docs/#flex-grid</span>
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> omega-reset</span>($nth) {</span>
+  &amp;<span class="pseudo">:nth-child</span>(#{$nth}) { <span class="attribute">margin-right</span><span class="value">: flex-gutter();</span> }
+  &amp;<span class="pseudo">:nth-child</span>(#{$nth}+1) { <span class="attribute">clear</span><span class="value">: none }
+}</code></pre>
+                    <h4 id="for-this-to-work-you-ll-need-to-add-or-update-bourbon-neat-s-grid-settings-https-github-com-thoughtbot-neat-getting-started-">For this to work, you&#39;ll need to add or update <a href="https://github.com/thoughtbot/neat#getting-started">Bourbon Neat&#39;s grid settings</a>.</h4>
+                    <p>Set <a href="http://bourbon.io/docs/#flex-grid">Bourbon&#39;s Flex Grid variables</a>  <code>$fg-column</code> and <code>$fg-gutter</code> to match what Bourbon Neat is doing:</p>
+                    <pre><code class="language-scss"><span class="comment">// ------------------------------------------------------------</span>
+<span class="comment">// _grid-settings.scss</span>
+<span class="comment">// See: https://github.com/thoughtbot/neat#getting-started</span>
 <span class="comment">// ------------------------------------------------------------</span>
 $fg-column<span class="value">: $column;</span>
 $fg-gutter<span class="value">: $gutter;</span></code></pre>
-                    <h2 id="include-omega-reset-mixin">Include Omega Reset Mixin</h2>
-                    <p>The <code>omega-reset</code> mixin allows you to reset the <code>@include omega()</code> styles on new media queries so that you can change the number of columns in your design.</p>
+                    <h2 id="usage">Usage</h2>
+                    <p>Reset the number passed to <code>@include omega()</code> from the previous media query into your new media query when changing the number of columns.</p>
                     <pre><code class="language-scss"><span class="comment">// ------------------------------------------------------------</span>
-<span class="comment">// Omega Reset</span>
+<span class="comment">// A Neat grid using Omega Reset</span>
 <span class="comment">// ------------------------------------------------------------</span>
-<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> omega-reset</span>($nth) {</span>
-  &amp;amp;<span class="pseudo">:nth-child</span>(#{$nth}) { <span class="attribute">margin-right</span><span class="value">: flex-gutter();</span> }
-  &amp;amp;<span class="pseudo">:nth-child</span>(#{$nth}+1) { <span class="attribute">clear</span><span class="value">: none }
+<span class="class">.grid</span> {
+  &gt; <span class="tag">div</span> {
+    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> media</span>(<span class="number">30</span>em)  {</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> span-columns</span>(<span class="number">6</span>);</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega</span>(<span class="number">2</span>n);</span>
+    }
+    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> media</span>(<span class="number">48</span>em)  {</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega-reset</span>(<span class="number">2</span>n);</span> <span class="comment">// Reset previous @include omega()</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> span-columns</span>(<span class="number">4</span>);</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega</span>(<span class="number">3</span>n);</span>
+    }
+    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> media</span>(<span class="number">64</span>em) {</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega-reset</span>(<span class="number">3</span>n);</span> <span class="comment">// Reset previous @include omega()</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> span-columns</span>(<span class="number">3</span>);</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega</span>(<span class="number">4</span>n);</span>
+    }
+    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> media</span>(<span class="number">80</span>em) {</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega-reset</span>(<span class="number">4</span>n);</span> <span class="comment">// Reset previous @include omega()</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> span-columns</span>(<span class="number">2</span>);</span>
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> omega</span>(<span class="number">6</span>n);</span>
+    }
+  }
 }</code></pre>
                     <div class="vert-sep">
                         <a class="button" href="https://github.com/joshfry/omega-reset-for-bourbon-neat" target="_blank">View on Github</a>
@@ -118,7 +132,7 @@ $fg-gutter<span class="value">: $gutter;</span></code></pre>
         <footer class="site-footer" role="contentinfo">
             <div class="container">
                 <div class="content">
-                    <p class="copyright">&copy; 2013 | Made by <i class="icon-high_voltage"></i>  <a href="https://twitter.com/joshfry" target="_blank">@joshfry</a>
+                    <p class="copyright">&copy; 2014 | Made by <i class="icon-high_voltage"></i>  <a href="https://twitter.com/joshfry" target="_blank">@joshfry</a>
                     </p>
                     <div class="social">
                         <nav>

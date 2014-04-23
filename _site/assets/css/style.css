@@ -1697,21 +1697,25 @@ body {
   clear: both;
 }
 .portfolio .item {
-  display: block;
-  float: left;
-  margin-right: 4.34783%;
-  width: 47.82609%;
   position: relative;
   margin-bottom: 1.5em;
 }
-.portfolio .item:last-child {
-  margin-right: 0;
-}
-.portfolio .item:nth-child(2n) {
-  margin-right: 0;
-}
-.portfolio .item:nth-child(2n+1) {
-  clear: left;
+@media screen and (min-width: 35em) {
+  .portfolio .item {
+    display: block;
+    float: left;
+    margin-right: 4.34783%;
+    width: 47.82609%;
+  }
+  .portfolio .item:last-child {
+    margin-right: 0;
+  }
+  .portfolio .item:nth-child(2n) {
+    margin-right: 0;
+  }
+  .portfolio .item:nth-child(2n+1) {
+    clear: left;
+  }
 }
 .portfolio .item img {
   border-radius: 0.25em;

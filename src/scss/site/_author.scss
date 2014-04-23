@@ -280,8 +280,10 @@ body {
   @include clearfix;
 
   .item {
-    @include span-columns(6);
-    @include omega(2n);
+    @include media(35em) {
+      @include span-columns(6);
+      @include omega(2n);
+    }
 
     position: relative;
     margin-bottom: 1.5em;
