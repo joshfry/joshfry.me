@@ -8,9 +8,28 @@ layout: base.hbs
   {{> head }}
 </head>
 <body {{#if bodyClass}}class="{{bodyClass}}"{{/if}}>
+
   <header class="site-header" role="banner">
-    {{> header }}
+    <div class="container">
+
+      <a class="branding" href="/">
+        <img class="site-logo" src="{{assets}}/img/josh-avatar.png" alt="Josh Fry" width="100" height="100">
+        <h1 class="title">Josh Fry</h1>
+        <h2 class="subtitle">Front-end dev &amp; design</h2>
+      </a>
+
+      <nav class="site-nav" role="navigation">
+        <div class="nav-links">
+          <a{{#is basename "notes"}} class="active"{{/is}} href="/"><i class="icon-high_voltage"></i> Notes</a>
+          <a{{#is basename "work"}} class="active"{{/is}} href="/work"><i class="icon-eye"></i> Work</a>
+          <a{{#is basename "about"}} class="active"{{/is}} href="/about"><i class="icon-user_male"></i> About</a>
+          <div class="mobile-menu"><i class="icon icon-reorder"></i></div>
+        </div>
+      </nav>
+
+    </div>
   </header>
+
   <main class="site-main" role="main">
     <div class="container">
       <div class="content">
@@ -19,6 +38,7 @@ layout: base.hbs
       </div>
     </div>
   </main>
+
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="content">
@@ -26,6 +46,8 @@ layout: base.hbs
       </div>
     </div>
   </footer>
+
   {{> scripts }}
+
 </body>
 </html>

@@ -212,9 +212,10 @@ body {
 }
 
 a {
-  color: #00ab88;
+  color: #2379cf;
   text-decoration: none;
   outline: 0;
+  font-weight: bold;
 }
 a:hover {
   color: #161e27;
@@ -1290,7 +1291,6 @@ table.table tbody th {
   font-weight: normal;
   font-style: normal;
 }
-
 /* Use the following CSS code if you want to have a class per icon */
 [class^="social-icon-"]:before, [class*="social-icon-"]:before {
   font-family: "joshfry" !important;
@@ -1445,10 +1445,11 @@ code[class*="language-"] .token.debug, pre[class*="language-"] .token.debug {
 .branding:after {
   clear: both;
 }
-@media screen and (min-width: 10000em) {
+@media screen and (min-width: 50em) {
   .branding {
     margin-right: 1em;
     float: left;
+    width: 50%;
   }
 }
 .branding .site-logo {
@@ -1492,7 +1493,6 @@ code[class*="language-"] .token.debug, pre[class*="language-"] .token.debug {
 
 .site-nav {
   *zoom: 1;
-  background: #161e27;
 }
 .site-nav:before, .site-nav:after {
   content: " ";
@@ -1505,24 +1505,34 @@ code[class*="language-"] .token.debug, pre[class*="language-"] .token.debug {
   height: 0;
   overflow: hidden;
 }
-@media screen and (min-width: 10000em) {
+@media screen and (min-width: 50em) {
   .site-nav .nav-links {
     height: auto;
     overflow: auto;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    float: right;
   }
+}
+.site-nav .nav-links a {
+  line-height: 0;
+  display: block;
+  float: left;
+  padding: 74px 20px;
+  color: #004537;
 }
 .site-nav .nav-links a i {
   position: relative;
   margin-right: .375em;
 }
 .site-nav .nav-links a:hover {
-  color: #00ab88;
-  background: #0d1117;
+  color: white;
 }
 .site-nav .nav-links a:hover i {
   color: white;
 }
-@media screen and (min-width: 10000em) {
+@media screen and (min-width: 50em) {
   .site-nav .nav-links .nav-right {
     float: right;
     padding-right: 0;
@@ -1530,7 +1540,7 @@ code[class*="language-"] .token.debug, pre[class*="language-"] .token.debug {
 }
 
 .mobile-menu {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
   -webkit-user-drag: none;
@@ -1541,7 +1551,7 @@ code[class*="language-"] .token.debug, pre[class*="language-"] .token.debug {
   text-align: center;
   color: #004537;
 }
-@media screen and (min-width: 10000em) {
+@media screen and (min-width: 50em) {
   .mobile-menu {
     display: none;
   }
@@ -1559,7 +1569,7 @@ code[class*="language-"] .token.debug, pre[class*="language-"] .token.debug {
   color: #2bffd1;
 }
 .menu-active .site-nav {
-  padding: .75em 0;
+  padding-bottom: 1em;
 }
 @media screen and (min-width: 45em) {
   .menu-active .site-nav {
@@ -1572,23 +1582,10 @@ code[class*="language-"] .token.debug, pre[class*="language-"] .token.debug {
 }
 .menu-active .nav-links a {
   display: block;
-  padding: 0.75em 0;
+  padding: 1.5em 1em;
+  float: none;
   text-align: center;
-  color: #eeeeee;
   font-weight: bold;
-}
-@media screen and (min-width: 45em) {
-  .menu-active .nav-links a {
-    display: block;
-    float: left;
-    line-height: 0;
-    height: 0;
-    padding: 2.5em 1.75em;
-    border-right: 1px solid #1F2B37;
-  }
-  .menu-active .nav-links a:first-of-type {
-    border-left: 1px solid #1F2B37;
-  }
 }
 
 body {
@@ -1684,6 +1681,10 @@ body {
 
 .codepen:hover {
   color: #ef6907;
+}
+
+.dribbble:hover {
+  color: #ea4c89;
 }
 
 .portfolio {

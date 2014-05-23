@@ -14,7 +14,7 @@
 // -------------------------------------------------------------------
 
 // Mobile nav breakpoint
-$mobile-nav-breakpoint: 10000em; // TODO: Design this later
+$mobile-nav-breakpoint: 50em; // TODO: Design this later
 
 .branding {
   @include clearfix;
@@ -25,6 +25,7 @@ $mobile-nav-breakpoint: 10000em; // TODO: Design this later
   @include media($mobile-nav-breakpoint) {
     margin-right: $unit;
     float: left;
+    width: 50%;
   }
 
   .site-logo {
@@ -72,7 +73,6 @@ $mobile-nav-breakpoint: 10000em; // TODO: Design this later
 
 .site-nav {
   @include clearfix;
-  background: $secondary;
 
   .nav-links {
     height: 0;
@@ -81,17 +81,28 @@ $mobile-nav-breakpoint: 10000em; // TODO: Design this later
     @include media($mobile-nav-breakpoint) {
       height: auto;
       overflow: auto;
+
+      display: block;
+      text-align: center;
+      font-weight: bold;
+      float: right;
     }
 
     a {
+      line-height: 0;
+      display: block;
+      float: left;
+      padding: 74px 20px;
+      color: $primary-darker;
+
       i {
         position: relative;
         margin-right: .375em;
       }
 
       &:hover {
-        color: $primary;
-        background: $secondary-dark;
+        color: $white;
+        // background: $primary-darker;
 
         i {
           color: $white;
@@ -142,7 +153,7 @@ $mobile-nav-breakpoint: 10000em; // TODO: Design this later
   }
 
   .site-nav {
-    padding: .75em 0;
+    padding-bottom: $unit;
 
     @include media(45em) {
       padding: 0;
@@ -155,23 +166,10 @@ $mobile-nav-breakpoint: 10000em; // TODO: Design this later
 
     a {
       display: block;
-      padding: $unit*.75 0;
+      padding: $unit * 1.5 $unit;
+      float: none;
       text-align: center;
-      color: $white-smoke;
       font-weight: bold;
-
-      @include media(45em) {
-        display: block;
-        float: left;
-        line-height: 0;
-        height: 0;
-        padding: 2.5em 1.75em;
-        border-right: 1px solid #1F2B37;
-
-        &:first-of-type {
-          border-left: 1px solid #1F2B37;
-        }
-      }
     }
   }
 }
@@ -272,6 +270,7 @@ body {
 .twitter:hover { color: #00a0d1 }
 .github:hover { color: #4183c4 }
 .codepen:hover { color: #EF6907 }
+.dribbble:hover { color: #EA4C89 }
 
 // Portfolio
 // -------------------------------------------------------------------
