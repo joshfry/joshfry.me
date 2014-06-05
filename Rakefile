@@ -7,40 +7,36 @@ def consoleHeading(taskName)
 
 end
 
-task :setup do
+task :default do
 
-  puts  consoleHeading('Installing Bundler')
-  sh    'gem install bundler'
-
-  puts  consoleHeading('Installing Grunt')
-  sh    'npm install -g grunt-cli'
-
-  puts  consoleHeading('Installing Bower')
-  sh    'npm install -g bower'
+  consoleHeading('Available rake commands')
+  puts 'rake install'
+  puts 'rake clean'
 
 end
 
 task :install do
 
-  puts  consoleHeading('Installing Ruby Gems')
-  sh    'bundle install --path=vendor'
+  consoleHeading('Installing Ruby Gems')
+  sh 'bundle install --path=vendor'
 
-  puts  consoleHeading('Installing npm modules')
-  sh    'npm install'
+  consoleHeading('Installing Node Modules')
+  sh 'npm install'
 
-  puts  consoleHeading('Installing Bower packages')
-  sh    'bower install'
+  consoleHeading('Installing Bower Dependencies')
+  sh 'bower install'
 
 end
 
 task :clean do
 
-  puts  consoleHeading('Cleaning out dev dependencies')
-  sh    'rm -rf dist'
-  sh    'rm -rf build'
-  sh    'rm -rf vendor'
-  sh    'rm -rf .bundle'
-  sh    'rm -rf .sass-cache'
-  sh    'rm -rf node_modules'
+  consoleHeading('Cleaning up')
+  sh 'rm -rf ./.bundle'
+  sh 'rm -rf ./.cache'
+  sh 'rm -rf ./.sass-cache'
+  sh 'rm -rf ./build'
+  sh 'rm -rf ./dist'
+  sh 'rm -rf ./node_modules'
+  sh 'rm -rf ./vendor'
 
 end
