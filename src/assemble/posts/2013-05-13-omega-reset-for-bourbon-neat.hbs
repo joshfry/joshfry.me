@@ -10,12 +10,6 @@ sortOrder: 9002
 
 {{#markdown}}
 
-<div style="border: 2px solid #268BD2; padding: 1em; text-align: center; color: #268BD2">
-  **Updated April 23, 2014:** New Neat syntax for declaring media queries `@include media(){}`
-</div>
-
-> This mixin assumes you are designing mobile-first using min-width media queries and using [Sass](http://sass-lang.com), [Bourbon](http://bourbon.io) and [Bourbon Neat](http://neat.bourbon.io) in your project.
-
 ## The Senario
 
 Your design needs a grid layout with one column on mobile. As the viewport gets larger, the number of columns need to increase.
@@ -60,23 +54,9 @@ The problem is that the `@include omega(2n)` mixin from earlier is inherited and
 // ------------------------------------------------------------
 
 @mixin omega-reset($nth) {
-  &:nth-child(#{$nth}) { margin-right: flex-gutter(); }
+  &:nth-child(#{$nth}) { margin-right: flex-gutter($grid-columns, $gutter); }
   &:nth-child(#{$nth}+1) { clear: none }
 }
-```
-
-#### For this to work, you'll need to add or update [Bourbon Neat's grid settings](https://github.com/thoughtbot/neat#getting-started).
-
-Set [Bourbon's Flex Grid variables](http://bourbon.io/docs/#flex-grid) `$fg-column` and `$fg-gutter` to match what Bourbon Neat is doing:
-
-```scss
-// ------------------------------------------------------------
-// _grid-settings.scss
-// See: https://github.com/thoughtbot/neat#getting-started
-// ------------------------------------------------------------
-
-$fg-column: $column;
-$fg-gutter: $gutter;
 ```
 
 ## Usage

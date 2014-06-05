@@ -1,0 +1,77 @@
+---
+date: 2014-06-05
+title: middleman snippets
+description: Snippets 'n stuff for ERB templating in Middleman.
+category: notes
+tags: dev
+published: true
+sortOrder: 8999
+---
+
+{{#markdown}}
+
+## List all child pages
+
+``` javascript
+<ul>
+< % current_page.children.each do |page| %>
+  <li>< %= link_to page.data.title, page.url %></li>
+< % end %>
+</ul>
+```
+
+## List pages in a specific directory with a specific tag
+
+``` javascript
+< % sitemap.resources.each do |page| %>
+  < % if page.url =~ /^(\/styleguide\/)/ && page.data.tags == 'pattern' %>
+
+    <br>< %= link_to page.data.title, page.url %>
+
+  < % end %>
+< % end %>
+```
+
+## Art direction and page-specific CSS &amp; JS
+
+#### In layout file
+
+``` javascript
+// in the head
+< %= yield_content :css %>
+// at the bottom
+< %= yield_content :js %>
+```
+
+#### On the page
+
+``` javascript
+< % content_for :css do %>
+<style>
+
+</style>
+< % end %>
+
+< % content_for :js do %>
+<script>
+  (function($){
+
+  })(jQuery);
+</script>
+< % end %>
+```
+
+## Title and (meta) description
+
+``` markup
+<title>< %= (current_page.data.page_title || current_page.data.title).titleize %> | < %= data.site.name %> </title>
+<meta content="< %= current_page.data.description || data.site.description %>" name="description" />
+```
+
+## Body classes
+
+``` markup
+<body class="< %= page_classes %> < %= current_page.data.layout %>">
+```
+
+{{/markdown}}
