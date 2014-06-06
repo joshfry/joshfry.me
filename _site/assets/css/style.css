@@ -244,7 +244,7 @@ h1, h2, h3, h4, h5, h6, .h6, h6,
 }
 
 h1, .h1 {
-  font-size: 3em;
+  font-size: 2em;
   line-height: 1;
   letter-spacing: -1px;
   margin-top: .375em;
@@ -252,7 +252,7 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-size: 2.25em;
+  font-size: 1.5em;
   line-height: 1.125;
   letter-spacing: -1px;
   margin-bottom: .375em;
@@ -339,8 +339,6 @@ del {
 }
 
 blockquote {
-  position: relative;
-  left: -9%;
   border-left: 0.5em solid #00ab88;
   color: #6a6a6a;
   margin: 1.6em 0;
@@ -623,8 +621,8 @@ input[type="submit"]:disabled {
   max-width: 45em;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 .container:before, .container--narrow:before, .container--super-narrow:before, .container--mobile:before, .container:after, .container--narrow:after, .container--super-narrow:after, .container--mobile:after {
   content: " ";

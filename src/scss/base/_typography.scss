@@ -11,14 +11,14 @@ h1, h2, h3, h4, h5, h6,
   text-rendering: optimizeLegibility;
 }
 h1, .h1 {
-  font-size: $base-font-size * 3;
+  font-size: $base-font-size * 2;
   line-height: 1;
   letter-spacing: -1px;
   margin-top: .375em;
   margin-bottom: .25em;
 }
 h2, .h2 {
-  font-size: $base-font-size * 2.25;
+  font-size: $base-font-size * 1.5;
   line-height: 1.125;
   letter-spacing: -1px;
   margin-bottom: .375em;
@@ -117,9 +117,6 @@ del {
 }
 
 blockquote {
-  position: relative;
-  left: -9%;
-
   border-left: .5em solid $primary;
   color: lighten($base-font-color, 15);
   margin: $base-line-height 0;
