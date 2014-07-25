@@ -1,12 +1,14 @@
 {
-  "name": "boilerplate",
-  "description": "Front-end tool for generating static sites with Grunt, Bower, Assemble, Sass, Bourbon, Bourbon Neat.",
+  "name": "middleman_init",
+  "description": "middleman_init",
   "version": "0.0.1",
   "dependencies": {
-    "jquery": "1.10.2",
-    "mfglabs-iconset": "https://github.com/MfgLabs/mfglabs-iconset.git",
-    "bourbon": "https://github.com/thoughtbot/bourbon.git#3.1.8",
-    "neat": "https://github.com/thoughtbot/neat.git#1.4.0",
+    "jquery": "2.1.0",
+    "fastclick": "https://github.com/ftlabs/fastclick.git#~0.6.11",
+    "normalize-css": "~3.0.0",
     "FitText.js": "https://github.com/davatron5000/FitText.js.git"
+  },
+  "devDependencies": {
+    "assets_init": "https://github.com/joshfry/assets_init.git"
   }
 }

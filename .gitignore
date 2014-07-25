@@ -1,18 +1,8 @@
 # Dot files
 .DS_Store
 .sass-cache
+.cache
 .bundle
 
 # Directories
-tmp
-dist
-build
-vendor
-
-# Node
-node_modules
-npm-debug.log
-
-# Sublime
-*.sublime-project
-*.sublime-workspace
+/vendor

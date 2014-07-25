@@ -1,0 +1,391 @@
+// -------------------------------------------------------------------
+// Using flexbox with WOS
+// -------------------------------------------------------------------
+
+// wrapper
+// -------------------------------------------------------------------
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+// header
+// -------------------------------------------------------------------
+
+.header {
+  padding: 0 em(10);
+
+  display: flex;
+  max-height: em(60);
+
+
+  // logo
+  // ====
+
+  .logo {
+    max-width: em(190);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  // nav
+  // ===
+
+  .nav {
+    margin-left: auto;
+    display: flex;
+
+    ul {
+      display: flex;
+    }
+  }
+}
+
+
+// main
+// -------------------------------------------------------------------
+
+.main {
+  flex: 1 0 0;
+  display: flex;
+
+
+  // app
+  // ===
+
+  .app {
+    flex: 4 0 0;
+    order: 2;
+
+    display: flex;
+    flex-direction: column;
+
+
+    // a
+    // -
+
+    .a {
+      flex: 1 auto;
+
+      display: flex;
+
+
+      // toolbar_left
+      // ............
+
+      .toolbar_left {
+        order: 1;
+
+        min-width: em(34);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+
+      // app_stage
+      // .........
+
+      .app_stage {
+        flex: 1 100%;
+        order: 2;
+
+        // temp ///////////////////
+        // Center text "app_stage"
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        ///////////////////////////
+      }
+
+
+      // preview
+      // .......
+
+      .preview {
+        flex: 1 100%;
+        order: 3;
+
+        max-width: em(275);
+      }
+    }
+
+
+    // toolbar_bottom
+    // --------------
+
+    .toolbar_bottom {
+      order: 3;
+
+      min-height: em(34);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+
+  // sidebar
+  // =======
+
+  .sidebar {
+    max-width: em(200);
+    overflow: auto;
+
+    flex: 1 0 0;
+    order: 1;
+
+  }
+}
+
+
+// user_photos
+// -------------------------------------------------------------------
+
+.user_photos {
+  padding: em(3);
+
+  ul {
+    max-height: em(95);
+
+    display: flex;
+    align-items: center;
+
+    li {
+      margin: em(3);
+    }
+  }
+
+  img {
+    &:hover {
+      cursor: move;
+    }
+  }
+}
+
+
+// mq's
+// -------------------------------------------------------------------
+
+// @include media(37.5em) {
+//   .sidebar {
+//     // flex: 1 auto; // 1
+//   }
+// }
+
+// @include media(50em) {
+//   .main {
+//     // flex: 2 0px; // 1
+//   }
+//   .sidebar.left {
+//     order: 1;
+//   }
+//   .main {
+//     order: 2;
+//   }
+//   .sidebar.right {
+//     order: 3;
+//   }
+//   footer {
+//     order: 4;
+//   }
+// }
+
+
+// icons
+// -------------------------------------------------------------------
+
+// <span class="icon" ><i class="fa fa-th"></i></span>
+
+.icon {
+  padding: em(10);
+  opacity: .75;
+
+  align-self: stretch;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  // specific sections
+
+  nav & {
+    min-width: em(50);
+    color: $black;
+
+    &:hover {
+      color: #0B7BB7;
+    }
+  }
+}
+
+
+// colors
+// -------------------------------------------------------------------
+
+.header {
+  // background: #0B7BB7;
+  border-top: 4px solid $white_smoke;
+  border-bottom: 1px solid rgba(0,0,0,.15);
+}
+.main { background: $white_smoke; }
+.app_stage { background: $light_smoke; }
+// .toolbar { color: $white; }
+.sidebar { background: $white_smoke; }
+.user_photos { background: #333; }
+
+
+// other
+// -------------------------------------------------------------------
+
+.upload_photo {
+  align-self: stretch;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  color: fade-out(#2ECC71, .4);
+  box-shadow: inset 0 0 0 2px fade-out(#2ECC71, .4);
+
+  &:hover {
+    cursor: pointer;
+    color: fade-out(#2ECC71, .1);
+    background: fade-out(#2ECC71, .9);
+    box-shadow: inset 0 0 0 2px fade-out(#2ECC71, .1);
+  }
+
+  i { font-size: em(32); }
+  span { font-size: em(54); }
+}
+
+
+// jamming on new styles
+// -------------------------------------------------------------------
+
+.options_table {
+  width: 100%;
+  font-weight: bold;
+
+  thead {
+    tr {
+      td {
+        padding: em(20);
+      }
+    }
+  }
+  tbody {
+    tr {
+      border-bottom: 1px solid #ddd;
+
+      &:hover {
+        cursor: pointer;
+        background: darken($white_smoke, 5);
+      }
+
+      td {
+        padding: em(10) em(20);
+        font-size: em(13);
+
+        &.size {
+        }
+
+        &.price {
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+
+// -------------------------------------------------------------------
+// Module
+//
+// Removes top margin from first child element
+// and bottom margin from last child element
+// -------------------------------------------------------------------
+
+
+@mixin module {
+  > *:first-child { margin-top: 0; }
+  > *:last-child { margin-bottom: 0; }
+}
+
+// Enable .module class
+.module {
+  @include module;
+}
+
+
+// -------------------------------------------------------------------
+// Add to cart
+// -------------------------------------------------------------------
+
+.add_to_cart {
+  @include module;
+  margin: em(10);
+  padding: em(20);
+  background: $white;
+  border-radius: em(6);
+  // box-shadow: 0 1px 0 2px rgba(0,0,0,.2);
+  border: 1px solid rgba(0,0,0,.15);
+  border-bottom: 3px solid rgba(0,0,0,.15);
+
+  .cart_inner {
+    margin-bottom: em(14);
+    padding-bottom: em(10);
+    border-bottom: 1px solid $white_smoke;
+  }
+
+  .cart_item {
+    @include clearfix;
+    margin-bottom: em(5);
+
+    // refactor later
+    .cart_item_l,
+    .cart_item_r {
+      width: 50%;
+      display: block;
+      float: left;
+    }
+
+    // refactor later
+    .cart_item_r {
+      text-align: right;
+      float: right;
+
+      // refactor later
+      select {
+        float: right;
+        margin-bottom: 0; // laaaaame
+      }
+    }
+  }
+
+  .cart_total {
+    margin: em(5) 0 em(10);
+    padding: em(5) 0 0;
+    border-top: 1px solid $gray;
+    font-weight: bold;
+  }
+}

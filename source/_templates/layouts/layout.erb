@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0" />
+
+  <title><%= (current_page.data.page_title || current_page.data.title).capitalize %> | <%= data.site.name %> </title>
+  <meta content="<%= current_page.data.description || data.site.description %>" name="description" />
+
+  <script type="text/javascript" src="//use.typekit.net/<%= data.site.typekitId %>.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  <%= stylesheet_link_tag "all" %>
+  <%= yield_content :css %>
+
+  <!--<script src="/assets/js/libs/modernizr-custom.js"></script>-->
+</head>
+<body class="<%= page_classes %>">
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div style="width: 150px">
+        <img src="/assets/img/josh-standard-trans.png" alt="">
+      </div>
+      <h1 class="j"><a href="/">JOSH FRY</a></h1>
+      <p class="h light"><%= data.site.description %></p>
+    </div>
+  </header>
+
+  <main class="site-main" role="main">
+    <div class="container">
+
+      <%= yield %>
+
+      <aside>
+        <%= partial "nav" %>
+        <%= partial "social" %>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="copyright">© <%= Time.now.year %> | Made by <a href="http://twitter.com/joshfry">@joshfry</a></p>
+    </div>
+  </footer>
+
+  <%= javascript_include_tag  "all" %>
+  <%= yield_content :js %>
+
+  <%= partial "analytics" %>
+
+</body>
+</html>
