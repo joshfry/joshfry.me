@@ -85,7 +85,7 @@ set :partials_dir, '_templates/partials'
 set :layouts_dir,  '_templates/layouts'
 set :helpers_dir,  'lib/helpers'
 set :fonts_dir,    'assets/fonts'
-set :build_dir,    '_site' # legacy from Jekyll
+set :build_dir,    'build' # legacy from Jekyll
 
 
 # -------------------------------------------------------------------
@@ -103,7 +103,7 @@ configure :build do
   # https://github.com/follmann/middleman-favicon-maker
   activate :favicon_maker do |f|
     f.template_dir  = File.join(root, 'source/assets/img')
-    f.output_dir    = File.join(root, '_site')
+    f.output_dir    = File.join(root, 'build')
     f.icons = {
       "favicon.ico" => [
         { icon: "favicon.ico", size: "32x32,16x16" },
