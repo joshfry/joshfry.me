@@ -1,8 +1,8 @@
-# Dot files
+# dotfiles
 .DS_Store
 .sass-cache
 .cache
 .bundle
 
-# Directories
+# directories
 /vendor

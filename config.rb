@@ -1,4 +1,3 @@
-
 # -------------------------------------------------------------------
 # Blog settings
 # -------------------------------------------------------------------
@@ -37,7 +36,7 @@ end
 
 page "blog/feed.xml", layout: false
 
-
+# -------------------------------------------------------------------
 # Page options, layouts, aliases and proxies
 # -------------------------------------------------------------------
 
@@ -64,7 +63,6 @@ activate :pages_directory
 require 'lib/extensions/custom_urls.rb'
 activate :custom_urls
 
-
 # -------------------------------------------------------------------
 # Global settings
 # -------------------------------------------------------------------
@@ -86,7 +84,6 @@ set :layouts_dir,  '_templates/layouts'
 set :helpers_dir,  'lib/helpers'
 set :fonts_dir,    'assets/fonts'
 set :build_dir,    'build' # legacy from Jekyll
-
 
 # -------------------------------------------------------------------
 # Build-specific config
@@ -113,4 +110,18 @@ configure :build do
 
   # Alt image path
   # set :http_prefix, "/Content/images/"
+end
+
+# -------------------------------------------------------------------
+# Deployment -- bitballoon
+# -------------------------------------------------------------------
+
+activate :bitballoon do |bitballoon|
+  # How to set an environment variable
+  # https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-a-linux-vps
+  bitballoon.token = ENV["BB_TOKEN"]
+  bitballoon.site  = "joshfry.bitballoon.com/"
+
+  # Optional: always run a build before deploying
+  bitballoon.build_before = true
 end

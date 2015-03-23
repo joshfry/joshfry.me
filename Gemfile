@@ -8,6 +8,7 @@ gem "middleman-blog", "~> 3.5.3"
 gem 'middleman-livereload', '~> 3.1.0'
 gem 'middleman-favicon-maker', '~> 3.5'
 gem 'middleman-syntax'
+gem 'middleman-bitballoon'
 gem 'middleman-pry'
 
 gem 'bourbon', '~> 3.1.8'
