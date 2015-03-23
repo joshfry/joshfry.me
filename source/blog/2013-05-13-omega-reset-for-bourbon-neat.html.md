@@ -87,8 +87,8 @@ The `omega-reset` mixin allows you to reset the `@include omega()` styles on new
 // ------------------------------------------------------------
 
 @mixin omega-reset($nth) {
-  &amp;:nth-child(#{$nth}) { margin-right: flex-gutter(); }
-  &amp;:nth-child(#{$nth}+1) { clear: none }
+  &:nth-child(#{$nth}) { margin-right: flex-gutter(); }
+  &:nth-child(#{$nth}+1) { clear: none }
 }
 ~~~
 
