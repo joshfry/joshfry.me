@@ -1,8 +1,9 @@
 # dotfiles
+.bundle
+.cache
 .DS_Store
 .sass-cache
-.cache
-.bundle
 
 # directories
+/build
 /vendor
