@@ -1,11 +1,6 @@
 ---
-date: 2013-05-13
-
-title: omega reset for bourbon neat
+title: Omega Reset For Bourbon Neat
 description: A Sass mixin for Bourbon Neat that let's you change the number of columns at any breakpoint.
-
-category: notes
-tags: sass
 ---
 
 This mixin assumes you are designing mobile-first using min-width media queries and using [Sass](http://sass-lang.com), [Bourbon](http://bourbon.io) and [Bourbon Neat](http://neat.bourbon.io) in your project.

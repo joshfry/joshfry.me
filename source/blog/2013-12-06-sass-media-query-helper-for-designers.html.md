@@ -1,11 +1,6 @@
 ---
-date: 2013-12-06
-
-title: sass media query helper for designers
+title: Sass Media Query Helper For Designers
 description: A configurable design tool that displays the current min-width media query in the bottom right corner of your screen and updates as you re-size the browser window.
-
-category: notes
-tags: sass, devtool
 ---
 
 A configurable design helper that displays the current min-width media query in the bottom right corner of your screen and updates as you re-size the browser window. When designing in the browser, you'll know exactly which media query you can add styles to when things start to look weird.

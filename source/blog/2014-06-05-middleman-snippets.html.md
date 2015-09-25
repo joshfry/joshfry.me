@@ -1,8 +1,6 @@
 ---
-title: middleman snippets
+title: Middleman Snippets
 description: Snippets 'n stuff for ERB templating in Middleman.
-
-tags: dev
 ---
 
 ## List all child pages
