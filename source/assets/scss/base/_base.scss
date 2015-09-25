@@ -9,16 +9,11 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: $base-font-family;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
-  color: $base-font-color;
+  font-family: $base_font_family;
+  font-size: $base_font_size;
+  line-height: $base_line_height;
+  color: $base_font_color;
   background-color: $base_body_color;
-}
-
-::selection {
-  background: $blue;
-  text-shadow: none;
 }
 
 img {
@@ -32,22 +27,16 @@ img {
   }
 }
 
-h1, h2, h3,
-h4, h5, h6 {
-  line-height: 1.2;
-}
-
 a {
-  @include button-reset;
-  color: $link-color;
+  color: $link_color;
   text-decoration: none;
   outline: 0;
 
   &:hover {
-    color: $link-hover-color;
+    color: $link_hover_color;
   }
   &:active, &:focus {
-    color: $link-hover-color;
+    color: $link_hover_color;
     outline: none;
   }
 }

@@ -144,4 +144,4 @@ By writing it this way I can alter that super nested rule very easily, like this
 - I havent tested this in the real world
 - Long class names
 
-I'll give this method a whirl and see if it proves to be an elegant solution. If not, oh well. It'll be fun.
+I'll give this thing a whirl and see if it proves to be an elegant solution. If not, oh well. It'll be fun.

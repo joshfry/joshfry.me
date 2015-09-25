@@ -12,15 +12,7 @@ $show_media_queries: false;
 // Typography
 // -------------------------------------------------------------------
 
-// Fonts
-$sans_serif: "brandon-grotesque", $helvetica; // 400, 900
-$serif: "ff-meta-serif-web-pro", $georgia; // 500, 700
-
-// Base
-$base_font_family: $serif;
-
-// Headings
-$header_font_family: $serif;
+$base_font_family: "proxima-nova", $helvetica; // 400, 700, 900;
 
 
 // Sizes
@@ -79,8 +71,8 @@ $blue: #2379cf;
 // -------------------------------------------------------------------
 
 // Body Color
-$base_body_color: $white;
-$base_font_color: $light_black;
+$base_body_color: $white_smoke;
+$base_font_color: $black;
 
 // Text Link Colors
 $link_color: $blue;

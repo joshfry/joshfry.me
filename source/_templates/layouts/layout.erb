@@ -7,8 +7,8 @@
   <title><%= (current_page.data.page_title || current_page.data.title).capitalize %> | <%= data.site.name %> </title>
   <meta content="<%= current_page.data.description || data.site.description %>" name="description" />
 
-  <script type="text/javascript" src="//use.typekit.net/<%= data.site.typekitId %>.js"></script>
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <script src="https://use.typekit.net/<%= data.site.typekitId %>.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
   <%= stylesheet_link_tag "all" %>
   <%= yield_content :css %>
@@ -19,11 +19,9 @@
 
   <header class="site-header" role="banner">
     <div class="container">
-      <div style="width: 150px">
-        <img src="/assets/img/josh-standard-trans.png" alt="">
+      <div class="logo">
+        <a href="/"><img src="/assets/img/josh-standard-trans.png" alt=""></a>
       </div>
-      <h1 class="j"><a href="/">JOSH FRY</a></h1>
-      <p class="h light"><%= data.site.description %></p>
     </div>
   </header>
 
@@ -35,25 +33,21 @@
       <aside>
         <nav class="social">
           <ul>
-            <li><a href="http://twitter.com/joshfry" class="twitter" target="_blank">
+            <li><a href="http://twitter.com/joshfry" class="twitter">
               <i class="fa fa-twitter"></i>
               <span>Twitter</span></a>
             </li>
-            <li><a href="http://github.com/joshfry" class="github" target="_blank">
+            <li><a href="http://github.com/joshfry" class="github">
               <i class="fa fa-github"></i>
               <span>GitHub</span></a>
             </li>
-            <li><a href="http://codepen.io/joshfry" class="codepen" target="_blank">
+            <li><a href="http://codepen.io/joshfry" class="codepen">
               <i class="fa fa-codepen"></i>
               <span>Codepen</span></a>
             </li>
-            <li><a href="https://dribbble.com/joshfry" class="dribbble" target="_blank">
+            <li><a href="https://dribbble.com/joshfry" class="dribbble">
               <i class="fa fa-dribbble"></i>
               <span>Dribbble</span></a>
-            </li>
-            <li><a href="https://www.facebook.com/josh.fry.35513" class="facebook" target="_blank">
-              <i class="fa fa-facebook"></i>
-              <span>Facebook</span></a>
             </li>
           </ul>
         </nav>

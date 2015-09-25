@@ -15,13 +15,13 @@
 @import "bourbon";
 @import "variables/grid-settings";
 @import "neat";
+@import "font-awesome";
 
 // Variables
 @import "variables/variables";
 
 // Mixins
 @import "mixins/media-query-helper";
-@import "mixins/button-reset";
 @import "mixins/omega-reset";
 @import "mixins/hide-text";
 @import "mixins/module";
@@ -29,10 +29,7 @@
 // Base
 @import "base/normalize";
 @import "base/base";
-
-// New
-@import "font-awesome";
-@import "new/global/syntax";
+@import "base/syntax";
 
 // Site
 @import "author";
