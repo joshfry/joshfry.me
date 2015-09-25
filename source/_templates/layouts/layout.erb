@@ -13,7 +13,7 @@
   <%= stylesheet_link_tag "all" %>
   <%= yield_content :css %>
 
-  <!--<script src="/assets/js/libs/modernizr-custom.js"></script>-->
+  <%# <script src="/assets/js/libs/modernizr-custom.js"></script> %>
 </head>
 <body class="<%= page_classes %>">
 
@@ -61,8 +61,8 @@
     </div>
   </footer>
 
-  <%= javascript_include_tag  "all" %>
-  <%= yield_content :js %>
+  <%#= javascript_include_tag  "all" %>
+  <%#= yield_content :js %>
 
   <%= partial "analytics" %>
 
