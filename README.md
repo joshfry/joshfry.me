@@ -9,3 +9,8 @@
 ```
 $ mm deploy
 ```
+
+## Deploy to Netlify
+```
+netlify deploy
+```
